@@ -1,0 +1,22 @@
+.heart-section {
+  margin: 3rem 0;
+  background: radial-gradient(800px 400px at 50% 0%, rgba(255,183,213,0.12), transparent 60%);
+  color: #fff;
+  padding: 1.25rem;
+  border-radius: 16px;
+  border: 1px solid rgba(155,89,182,0.35);
+}
+.heart-title {
+  text-align: center;
+  color: var(--vera-neural-blue);
+  font-size: 2rem;
+  text-shadow: 0 0 8px var(--vera-glow-pink);
+  margin-bottom: 0.75rem;
+}
+.heart-text {
+  max-width: 900px;
+  margin: 0 auto;
+  color: #eaeaea;
+  text-align: center;
+  line-height: 1.7;
+}
