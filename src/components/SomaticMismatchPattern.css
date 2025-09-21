@@ -1,59 +1,55 @@
-.smp-container {
-  background: #1a2238cc;
-  padding: 28px 20px;
-  border-radius: 16px;
-  max-width: 420px;
-  margin: 36px auto 0;
+.smp-card {
+  background: linear-gradient(180deg, var(--vera-deep-space), var(--vera-midnight));
+  border: 1px solid rgba(155, 89, 182, 0.35);
+  border-radius: 12px;
+  padding: 0.9rem;
   color: #fff;
-  text-align: center;
-  box-shadow: 0 4px 24px #13ffe522;
+  box-shadow: 0 0 16px rgba(255, 183, 213, 0.15);
 }
 
-.smp-title {
-  color: #13ffe5;
-  margin-bottom: 12px;
+.smp-explainer {
+  margin: 0 0 0.75rem 0;
+  color: var(--text-soft);
+  line-height: 1.5;
 }
 
-.smp-desc {
-  margin-bottom: 14px;
-}
-
-.smp-step {
-  margin-bottom: 16px;
-}
-
-.smp-list {
-  text-align: left;
-  margin: 10px auto 0;
-  max-width: 340px;
-  color: #79ffe1;
-}
-
-.smp-finish {
-  margin-top: 10px;
-  color: #ffd966;
-  font-weight: 500;
-}
-
-.smp-btn-primary, .smp-btn-secondary {
-  background: #13ffe5;
-  color: #232046;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 24px;
+.smp-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--vera-neural-blue);
   font-weight: 600;
+}
+
+.smp-textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 120px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem;
+  box-shadow: inset 0 0 6px var(--vera-purple);
+}
+.smp-textarea:focus-visible {
+  outline: 2px solid var(--vera-glow-pink);
+  outline-offset: 2px;
+}
+
+.smp-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.6rem;
+}
+.smp-btn {
+  background: linear-gradient(135deg, var(--vera-purple), var(--vera-neural-blue));
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
   cursor: pointer;
-  margin-top: 18px;
-  font-size: 1em;
-  box-shadow: 0 2px 12px #13ffe533;
-  transition: background 0.2s;
 }
-.smp-btn-secondary {
-  background: #ffd966;
-  color: #232046;
-}
-.smp-btn-primary:hover,
-.smp-btn-secondary:hover {
-  background: #232046;
-  color: #13ffe5;
+.smp-btn:hover, .smp-btn:focus-visible {
+  box-shadow: 0 0 12px var(--vera-glow-pink);
+  outline: none;
 }
