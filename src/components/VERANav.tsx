@@ -1,101 +1,205 @@
-// Chat + voice section: transcript, mic (STT), speaker toggle, language select, TTS.
-// Factor assistant reply into fetchAssistantReply(prompt: string): Promise<string>.
-import React, { useState, useRef, useEffect, useContext } from "react";
-import { VeraContext } from "../pages/_app";
-import useSpeechRecognition from "../utils/useSpeechRecognition";
+import React, { useEffect, useRef, useState } from "react";
+import "./VERANav.css";
+import VERAAuthModal from "./VERAAuthModal";
 
-type ChatMessage = {
-  role: "user" | "assistant";
-  text: string;
-  ts: number;
-};
+/**
+ * VERA Top Navigation
+ * - Fixed below the test banner (configurable offset)
+ * - Glass background, border, and shadow tighten on scroll
+ * - Section anchor links + Sign In / Sign Up CTA
+ * - Mobile menu (accessible, focus-trappable)
+ * - Opens VERAAuthModal with full built-in wiring
+ */
+export default function VERANav({
+  bannerOffset = 48, // px; aligns with your test banner height
+}: {
+  bannerOffset?: number;
+}) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const drawerRef = useRef<HTMLDivElement | null>(null);
+  const burgerRef = useRef<HTMLButtonElement | null>(null);
 
-const LANGUAGES = [
-  { code: "en-US", label: "English (US)" },
-  { code: "en-GB", label: "English (UK)" },
-  { code: "es-ES", label: "Español" },
-  { code: "fr-FR", label: "Français" }
-];
-
-export default function VERACompanion() {
-  const { speakerOn } = useContext(VeraContext);
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      role: "assistant",
-      text: "Hello! How is your body feeling right now?",
-      ts: Date.now(),
-    },
-  ]);
-  const [input, setInput] = useState("");
-  const [lang, setLang] = useState("en-US");
-  const [isSending, setIsSending] = useState(false);
-  const chatEndRef = useRef<HTMLDivElement | null>(null);
-
-  // STT hook
-  const speech = useSpeechRecognition({ lang });
-
-  // Scroll to end when messages update
+  // Scroll style tightening
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-  // When STT transcript updates
-  useEffect(() => {
-    if (speech.transcript && !speech.listening && speech.supported) {
-      setInput(speech.transcript);
+  // Close mobile drawer on route hash navigation or link click
+  function handleNavClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    const href = (e.currentTarget.getAttribute("href") || "").trim();
+    if (href.startsWith("#")) {
+      setMenuOpen(false);
     }
-  }, [speech.transcript, speech.listening, speech.supported]);
-
-  // Utility: Play chime before speaking
-  const playChime = () => {
-    const audio = new Audio("/vera-chime.mp3");
-    audio.play();
-  };
-
-  // TTS: browser or server (ElevenLabs)
-  const speak = (text: string) => {
-    if (!speakerOn) return;
-    playChime();
-    if (process.env.NEXT_PUBLIC_USE_SERVER_TTS === "true") {
-      fetch("/api/speak", {
-        method: "POST",
-        body: JSON.stringify({ text, voice: lang }),
-        headers: { "Content-Type": "application/json" },
-      })
-        .then((r) => r.ok ? r.blob() : null)
-        .then((blob) => {
-          if (blob) {
-            const url = URL.createObjectURL(blob);
-            const audio = new Audio(url);
-            audio.play();
-          }
-        });
-    } else if ("speechSynthesis" in window) {
-      const utter = new window.SpeechSynthesisUtterance(text);
-      utter.lang = lang;
-      utter.rate = 1;
-      // Use preferred voice if available
-      const voices = window.speechSynthesis.getVoices();
-      utter.voice = voices.find((v) => v.lang === lang) || undefined;
-      window.speechSynthesis.speak(utter);
-    }
-  };
-
-  // Mock LLM reply (replace with real endpoint later)
-  async function fetchAssistantReply(prompt: string): Promise<string> {
-    await new Promise((r) => setTimeout(r, 800));
-    return (
-      "Thank you for sharing. Can you notice where in your body this is most alive?"
-    );
   }
 
-  // Send message
-  async function submit(e?: React.FormEvent) {
-    e?.preventDefault();
-    if (!input.trim()) return;
-    const now = Date.now();
-    setMessages((m) => [...m, { role: "user", text: input, ts: now }]);
-    setIsSending(true);
-    setInput("");
-    const reply = await fetchAssistantReply(input);
-    setMessages
+  // Close menu when clicking outside
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onDown = (e: MouseEvent) => {
+      if (!drawerRef.current) return;
+      const target = e.target as Node;
+      if (!drawerRef.current.contains(target) && target !== burgerRef.current) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onDown);
+    return () => document.removeEventListener("mousedown", onDown);
+  }, [menuOpen]);
+
+  // ESC to close menu
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
+
+  // Prevent body scroll when menu open (mobile)
+  useEffect(() => {
+    const original = document.body.style.overflow;
+    if (menuOpen) document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, [menuOpen]);
+
+  return (
+    <>
+      {/* Skip to content (a11y) */}
+      <a className="vera-skip" href="#main">
+        Skip to content
+      </a>
+
+      <nav
+        className={`vera-nav ${scrolled ? "scrolled" : ""}`}
+        style={{ ["--nav-offset" as any]: `${bannerOffset}px` }}
+        aria-label="Primary"
+      >
+        <div className="vera-nav-inner">
+          {/* Brand */}
+          <button
+            className="vera-logo"
+            onClick={() => (window.location.href = "/")}
+            aria-label="Go to home"
+          >
+            VERA
+          </button>
+
+          {/* Desktop Links */}
+          <ul className="vera-links">
+            <li>
+              <a href="#methodology" className="vera-link" onClick={handleNavClick}>
+                Methodology
+              </a>
+            </li>
+            <li>
+              <a href="#pricing" className="vera-link" onClick={handleNavClick}>
+                Pricing
+              </a>
+            </li>
+            <li>
+              <a href="#experience" className="vera-link" onClick={handleNavClick}>
+                Experience VERA
+              </a>
+            </li>
+          </ul>
+
+          {/* Desktop CTA */}
+          <div className="vera-cta">
+            <button
+              className="vera-cta-btn"
+              onClick={() => setAuthOpen(true)}
+              aria-haspopup="dialog"
+              aria-controls="vera-auth-modal"
+            >
+              Sign In / Sign Up
+            </button>
+          </div>
+
+          {/* Mobile Burger */}
+          <button
+            ref={burgerRef}
+            className={`vera-burger ${menuOpen ? "open" : ""}`}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="vera-mobile-drawer"
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+          </button>
+        </div>
+
+        {/* Mobile Drawer */}
+        <div
+          id="vera-mobile-drawer"
+          ref={drawerRef}
+          className={`vera-drawer ${menuOpen ? "open" : ""}`}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation"
+        >
+          <ul className="vera-drawer-links" role="menu">
+            <li role="none">
+              <a
+                role="menuitem"
+                href="#methodology"
+                className="vera-drawer-link"
+                onClick={handleNavClick}
+              >
+                Methodology
+              </a>
+            </li>
+            <li role="none">
+              <a
+                role="menuitem"
+                href="#pricing"
+                className="vera-drawer-link"
+                onClick={handleNavClick}
+              >
+                Pricing
+              </a>
+            </li>
+            <li role="none">
+              <a
+                role="menuitem"
+                href="#experience"
+                className="vera-drawer-link"
+                onClick={handleNavClick}
+              >
+                Experience VERA
+              </a>
+            </li>
+          </ul>
+
+          <button
+            className="vera-drawer-cta"
+            onClick={() => {
+              setMenuOpen(false);
+              setAuthOpen(true);
+            }}
+            aria-haspopup="dialog"
+            aria-controls="vera-auth-modal"
+          >
+            Sign In / Sign Up
+          </button>
+        </div>
+      </nav>
+
+      {/* Auth Modal (wired, no external props required beyond open/close) */}
+      <VERAAuthModal
+        isOpen={authOpen}
+        onClose={() => setAuthOpen(false)}
+        defaultTab="signin"
+      />
+    </>
+  );
+}
