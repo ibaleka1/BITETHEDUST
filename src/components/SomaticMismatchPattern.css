@@ -1,0 +1,59 @@
+.smp-container {
+  background: #1a2238cc;
+  padding: 28px 20px;
+  border-radius: 16px;
+  max-width: 420px;
+  margin: 36px auto 0;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 4px 24px #13ffe522;
+}
+
+.smp-title {
+  color: #13ffe5;
+  margin-bottom: 12px;
+}
+
+.smp-desc {
+  margin-bottom: 14px;
+}
+
+.smp-step {
+  margin-bottom: 16px;
+}
+
+.smp-list {
+  text-align: left;
+  margin: 10px auto 0;
+  max-width: 340px;
+  color: #79ffe1;
+}
+
+.smp-finish {
+  margin-top: 10px;
+  color: #ffd966;
+  font-weight: 500;
+}
+
+.smp-btn-primary, .smp-btn-secondary {
+  background: #13ffe5;
+  color: #232046;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 18px;
+  font-size: 1em;
+  box-shadow: 0 2px 12px #13ffe533;
+  transition: background 0.2s;
+}
+.smp-btn-secondary {
+  background: #ffd966;
+  color: #232046;
+}
+.smp-btn-primary:hover,
+.smp-btn-secondary:hover {
+  background: #232046;
+  color: #13ffe5;
+}
