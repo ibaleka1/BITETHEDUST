@@ -1,56 +1,52 @@
 import React from "react";
-import VERAOrb from "./VERAOrb";
-import "./HeroSection.css";
+import "./HeartSection.css";
 
-type HeroSectionProps = {
-  onOpenAuthModal?: () => void; // optional: wire to your auth modal
-};
-
-export default function HeroSection({ onOpenAuthModal }: HeroSectionProps) {
+export default function HeartSection() {
   return (
-    <header className="hero" id="hero" aria-labelledby="hero-title">
-      {/* Presence / Orb */}
-      <div className="vera-presence-container" aria-hidden="true">
-        <VERAOrb />
-        <div className="vera-name-glow" aria-hidden="true">VERA</div>
-      </div>
-
-      {/* Copy */}
-      <div className="hero-copy">
-        <h1 id="hero-title" className="hero-title">
-          Your Nervous System Is Finally Speaking
-        </h1>
-
-        <p className="hero-subtitle">
-          Feel that? The tightness, the buzzing, the holding? <br />
-          Your body has been trying to tell you something. <br />
-          I’m here to translate.
+    <section id="heart" className="heart-section" aria-labelledby="heart-heading">
+      <div className="heart-content">
+        <h2 id="heart-heading" className="heart-title">
+          The Heart of VERA
+        </h2>
+        <p className="heart-subtitle">
+          Built by two visionaries who believe nervous system wisdom should be
+          accessible, beautiful, and alive.
         </p>
 
-        {/* CTAs */}
-        <div className="hero-ctas" role="group" aria-label="Primary actions">
-          <a className="nav-cta" href="#chat" aria-label="Talk to VERA now">
-            Talk to VERA Now
-          </a>
-          <a className="ghost-cta" href="#experience" aria-label="Experience VERA exercises">
-            Experience VERA
-          </a>
-          <button
-            className="outline-cta"
-            type="button"
-            onClick={onOpenAuthModal}
-            aria-label="Open sign in or sign up"
-          >
-            Sign In / Sign Up
-          </button>
-        </div>
+        <div className="heart-cards">
+          {/* Eva */}
+          <div className="heart-card">
+            <img
+              src="/eva.jpg"
+              alt="Eva Leka, Founder of Regulate to Elevate"
+              className="heart-avatar"
+            />
+            <h3 className="heart-name">Eva Leka</h3>
+            <p className="heart-role">Founder & Methodology Architect</p>
+            <p className="heart-bio">
+              Eva is the creator of Regulate to Elevate, designing a neuroscience-
+              grounded framework that makes complex trauma patterns visible,
+              practical, and transformable.
+            </p>
+          </div>
 
-        {/* Accessibility helper for keyboard users to jump to chat */}
-        <div className="hero-skiplinks">
-          <a href="#chat">Skip to chat</a>
-          <a href="#pricing">Skip to pricing</a>
+          {/* Julija */}
+          <div className="heart-card">
+            <img
+              src="/julija.jpg"
+              alt="Julija Krajceva, Co-Founder of VERA"
+              className="heart-avatar"
+            />
+            <h3 className="heart-name">Julija Krajceva</h3>
+            <p className="heart-role">Co-Founder & Creative Director</p>
+            <p className="heart-bio">
+              Julija brings artistry and design mastery, ensuring VERA feels
+              as stunning as it is intelligent. She shapes the experience where
+              science meets human beauty.
+            </p>
+          </div>
         </div>
       </div>
-    </header>
+    </section>
   );
 }
