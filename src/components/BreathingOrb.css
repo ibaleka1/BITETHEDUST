@@ -1,36 +1,52 @@
-.breathing-orb-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 56px;
-}
-
-.breathing-orb {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 60% 40%, #76c7ff 60%, #27215a 100%);
-  box-shadow: 0 0 60px 10px #76c7ff66, 0 0 100px 30px #fff3;
-  transition: background 1s, transform 1s cubic-bezier(.7,0,.3,1);
-  margin-bottom: 32px;
-}
-
-.breathing-orb-text {
+/* Animated breathing orb for 4-4-4 rhythm. Accessible. */
+.breathing-orb-section {
   text-align: center;
-  font-family: 'Poppins', sans-serif;
+  margin: 3rem 0;
+}
+.breathing-orb-title {
+  font-size: 2rem;
+  color: var(--vera-neural-blue);
+  margin-bottom: 1rem;
+}
+.breathing-orb {
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 60% 40%, var(--vera-glow-pink), var(--vera-neural-blue) 80%, transparent 100%);
+  transition: box-shadow 0.3s;
+  animation: inhale 12s infinite cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 0 60px 20px var(--vera-lavender);
+}
+.breathing-orb.active {
+  box-shadow: 0 0 120px 40px var(--vera-neural-blue);
+}
+@keyframes inhale {
+  0% { transform: scale(1);}
+  17% { transform: scale(1.2);}
+  33% { transform: scale(1.2);}
+  50% { transform: scale(1);}
+  67% { transform: scale(0.85);}
+  100% { transform: scale(1);}
+}
+.breathing-orb-btn {
+  background: linear-gradient(90deg, var(--vera-lavender), var(--vera-neural-blue));
+  border: none;
   color: #fff;
+  font-size: 1.1rem;
+  border-radius: 32px;
+  padding: 0.7em 2.2em;
+  cursor: pointer;
+  margin-bottom: 1em;
+  transition: box-shadow 0.2s;
 }
-
-.breathing-orb-phase {
-  font-size: 1.25em;
-  font-weight: 500;
-  letter-spacing: 1px;
-  margin-bottom: 2px;
+.breathing-orb-btn:hover,
+.breathing-orb-btn:focus {
+  box-shadow: 0 4px 18px var(--vera-glow-pink);
+  outline: 2px solid var(--vera-neural-blue);
 }
-
-.breathing-orb-count {
-  font-size: 2.3em;
-  font-weight: 700;
-  color: #ffecb3;
-  text-shadow: 0 0 9px #fff8;
+.breathing-orb-desc {
+  color: var(--text-soft);
+  font-size: 1.1em;
+  margin-top: 1em;
 }
