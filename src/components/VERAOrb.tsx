@@ -1,22 +1,18 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./VERAOrb.css";
-
-const playChime = () => {
-  const audio = new Audio("/vera-chime.mp3");
-  audio.play();
-};
+import { speakWithVera } from "../utils/speak";
 
 const VERAOrb: React.FC = () => {
   const orbRef = useRef<HTMLDivElement>(null);
+  const [listening, setListening] = useState(false);
 
-  const activate = () => {
+  const activate = async () => {
     if (orbRef.current) {
       orbRef.current.classList.add("active");
-      playChime();
-      setTimeout(() => {
-        orbRef.current && orbRef.current.classList.remove("active");
-      }, 1500);
+      setTimeout(() => orbRef.current?.classList.remove("active"), 1500);
     }
+    // Example: Speak a compassionate greeting
+    await speakWithVera("Hello, I'm VERA. How can I support you today?");
   };
 
   return (
@@ -33,7 +29,7 @@ const VERAOrb: React.FC = () => {
         <span className="vera-orb-inner"></span>
       </div>
       <div style={{ marginTop: 12, color: "#555" }}>
-        Click the orb to activate VERA
+        Click the orb to talk to VERA
       </div>
     </div>
   );
