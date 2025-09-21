@@ -10,6 +10,10 @@ export default function Home() {
         <title>VERA: Nervous System Regulation Portal</title>
         <meta name="description" content="Grounding, somatic mismatch, and sensory surprise tools for nervous system regulation." />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
       </Head>
       <main style={{
         background: "linear-gradient(135deg, #232046 0%, #27215a 100%)",
