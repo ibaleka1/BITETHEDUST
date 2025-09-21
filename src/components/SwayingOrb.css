@@ -1,55 +1,62 @@
-.swaying-orbit-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 56px;
+/* Swaying Orbit: full-screen modal with floating particle orbit, gentle sway (6 bpm). */
+.swaying-orbit-open {
+  background: linear-gradient(90deg, var(--vera-neural-blue), var(--vera-lavender));
+  border: none;
+  color: #fff;
+  border-radius: 32px;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.7em 2.2em;
+  cursor: pointer;
+  margin: 2em auto 1em;
+  display: block;
 }
-
-.swaying-orbit {
-  width: 170px;
-  height: 170px;
+.swaying-orbit-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 2000;
+  background: rgba(10,14,39,0.92);
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  animation: sway 5s ease-in-out infinite;
+  animation: fadeIn 0.25s;
 }
-
-.swaying-orbit-inner {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 60% 40%, #f6d365 0%, #fda085 60%, #f6d365 100%);
-  box-shadow:
-    0 0 60px 10px #f6d36566,
-    0 0 100px 30px #fda08566,
-    0 0 140px 50px #fff2;
-  filter: blur(0.5px);
-}
-
-@keyframes sway {
-  0% {
-    transform: translateX(0%);
-  }
-  20% {
-    transform: translateX(-18%);
-  }
-  50% {
-    transform: translateX(18%);
-  }
-  80% {
-    transform: translateX(-18%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}
-
-.swaying-orbit-text {
-  margin-top: 24px;
-  font-size: 1.15em;
-  color: #fffde4;
+.swaying-orbit-content {
+  position: relative;
+  background: rgba(21,24,50,0.85);
+  padding: 2.5em 3em 2em;
+  border-radius: 32px;
+  min-width: 320px;
+  box-shadow: 0 0 36px 12px var(--vera-lavender);
   text-align: center;
-  font-family: 'Poppins', sans-serif;
-  text-shadow: 0 2px 16px #f6d36577;
-  letter-spacing: 0.5px;
+}
+.swaying-orbit-particles {
+  width: 160px; height: 160px;
+  margin: 0 auto 1.6em;
+  border-radius: 50%;
+  position: relative;
+  background: radial-gradient(circle, var(--vera-glow-pink) 0 10%, transparent 80%);
+  animation: sway 10s infinite ease-in-out;
+}
+@keyframes sway {
+  0% { transform: rotate(-8deg);}
+  15% { transform: rotate(8deg);}
+  30% { transform: rotate(-5deg);}
+  50% { transform: rotate(5deg);}
+  70% { transform: rotate(-8deg);}
+  100% { transform: rotate(-8deg);}
+}
+.swaying-orbit-close {
+  background: none;
+  border: 2px solid var(--vera-neural-blue);
+  color: var(--vera-neural-blue);
+  border-radius: 24px;
+  padding: 0.4em 1.8em;
+  margin-top: 1em;
+  font-size: 1em;
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .swaying-orbit-content { min-width: 90vw; padding: 1.2em 0.5em 1em; }
+  .swaying-orbit-particles { width: 110px; height: 110px; }
 }
