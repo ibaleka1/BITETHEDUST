@@ -1,120 +1,147 @@
-import React, { useRef, useEffect } from "react";
-import "./NeuronNetworkOrb.css";
+import { useMemo } from "react";
+import "./NeuronOrb.css";
 
-const axons = [
-  // Each axon connects two nodes (cx1, cy1) -> (cx2, cy2)
-  { from: [100, 100], to: [40, 50] },
-  { from: [100, 100], to: [160, 60] },
-  { from: [100, 100], to: [50, 160] },
-  { from: [100, 100], to: [170, 160] },
-  { from: [100, 100], to: [100, 190] },
-  { from: [100, 100], to: [30, 100] },
-  { from: [100, 100], to: [180, 100] },
-];
+/**
+ * Dense, glowing neuron orb with animated axons + pulses.
+ * Matches the vibe of your HTML "living neural" visuals.
+ */
+export default function NeuronOrb() {
+  // Dense coordinates & edges; built once.
+  const { nodes, edges, pulses } = useMemo(() => {
+    // Core + satellites
+    const center = { id: "c", x: 100, y: 100, r: 20, main: true };
 
-const nodes = [
-  { cx: 100, cy: 100, r: 38 }, // main
-  { cx: 40, cy: 50, r: 16 },
-  { cx: 160, cy: 60, r: 12 },
-  { cx: 50, cy: 160, r: 11 },
-  { cx: 170, cy: 160, r: 13 },
-  { cx: 100, cy: 190, r: 10 },
-  { cx: 30, cy: 100, r: 8 },
-  { cx: 180, cy: 100, r: 9 },
-];
+    const satellites = [
+      { id: "n1", x: 50, y: 38, r: 8 },
+      { id: "n2", x: 150, y: 45, r: 8 },
+      { id: "n3", x: 36, y: 92, r: 7 },
+      { id: "n4", x: 168, y: 90, r: 7 },
+      { id: "n5", x: 46, y: 160, r: 8 },
+      { id: "n6", x: 155, y: 160, r: 8 },
+      { id: "n7", x: 92, y: 40, r: 6 },
+      { id: "n8", x: 120, y: 28, r: 6 },
+      { id: "n9", x: 22, y: 122, r: 6 },
+      { id: "n10", x: 178, y: 126, r: 6 },
+      { id: "n11", x: 22, y: 70, r: 6 },
+      { id: "n12", x: 178, y: 70, r: 6 },
+      { id: "n13", x: 82, y: 176, r: 6 },
+      { id: "n14", x: 116, y: 176, r: 6 },
+      { id: "n15", x: 76, y: 132, r: 5 },
+      { id: "n16", x: 124, y: 132, r: 5 },
+      { id: "n17", x: 70, y: 88, r: 5 },
+      { id: "n18", x: 130, y: 88, r: 5 },
+      { id: "n19", x: 100, y: 20, r: 5 },
+      { id: "n20", x: 100, y: 180, r: 5 },
+    ];
 
-const signals = [
-  // Each signal will animate along a path from center to node
-  { pathIndex: 0, duration: 2.2, delay: 0 },
-  { pathIndex: 1, duration: 2.5, delay: 0.7 },
-  { pathIndex: 2, duration: 2.3, delay: 1.2 },
-  { pathIndex: 3, duration: 2.4, delay: 1.7 },
-  { pathIndex: 4, duration: 2.6, delay: 0.9 },
-  { pathIndex: 5, duration: 2.7, delay: 1.3 },
-  { pathIndex: 6, duration: 2.1, delay: 0.6 },
-];
+    // Edges from center to many, plus cross-links for webbing
+    const toC = satellites.map((s) => ({
+      from: center,
+      to: s,
+      curve: (dx: number, dy: number) => ({
+        // slight bezier curve toward mid
+        cx: center.x + dx * 0.25,
+        cy: center.y + dy * 0.25,
+      }),
+    }));
 
-function getPathD(from: number[], to: number[]) {
-  // Organic quadratic curve
-  const [x1, y1] = from, [x2, y2] = to;
-  const mx = (x1 + x2) / 2 + (Math.random() - 0.5) * 8;
-  const my = (y1 + y2) / 2 + (Math.random() - 0.5) * 8;
-  return `M${x1},${y1} Q${mx},${my} ${x2},${y2}`;
-}
+    const cross: Array<{
+      from: (typeof satellites)[number];
+      to: (typeof satellites)[number];
+      bend?: number;
+    }> = [
+      { from: satellites[0], to: satellites[7], bend: 0.2 },
+      { from: satellites[1], to: satellites[8], bend: -0.25 },
+      { from: satellites[2], to: satellites[4], bend: 0.3 },
+      { from: satellites[3], to: satellites[5], bend: -0.2 },
+      { from: satellites[7], to: satellites[10], bend: 0.25 },
+      { from: satellites[8], to: satellites[11], bend: -0.25 },
+      { from: satellites[13], to: satellites[14], bend: 0.15 },
+      { from: satellites[15], to: satellites[16], bend: -0.15 },
+      { from: satellites[17], to: satellites[7], bend: 0.2 },
+      { from: satellites[18], to: satellites[8], bend: -0.2 },
+    ];
 
-export default function NeuronNetworkOrb({ onActivate }: { onActivate?: () => void }) {
-  // Animate signals by updating stroke-dashoffset with CSS
-  const svgRef = useRef<SVGSVGElement>(null);
+    const edges = [
+      ...toC.map((e) => {
+        const dx = e.to.x - e.from.x;
+        const dy = e.to.y - e.from.y;
+        const { cx, cy } = e.curve(dx, dy);
+        return {
+          d: `M${e.from.x},${e.from.y} C${cx},${cy} ${e.to.x},${e.to.y} ${e.to.x},${e.to.y}`,
+        };
+      }),
+      ...cross.map(({ from, to, bend = 0.2 }) => {
+        const mx = (from.x + to.x) / 2 + (to.y - from.y) * bend;
+        const my = (from.y + to.y) / 2 + (from.x - to.x) * bend;
+        return {
+          d: `M${from.x},${from.y} Q${mx},${my} ${to.x},${to.y}`,
+        };
+      }),
+    ];
 
-  useEffect(() => {
-    // Redraw axon paths occasionally for organic feel
-    const interval = setInterval(() => {
-      if (svgRef.current) {
-        const paths = svgRef.current.querySelectorAll(".axon-path");
-        axons.forEach((axon, i) => {
-          const d = getPathD(axon.from, axon.to);
-          (paths[i] as SVGPathElement).setAttribute("d", d);
-        });
-      }
-    }, 2000);
-    return () => clearInterval(interval);
+    // Pulses radiating along different vectors (CSS anim handles motion)
+    const pulses = new Array(12).fill(0).map((_, i) => ({
+      key: `p-${i}`,
+      className: `signal-pulse signal-pulse-${i % 7}`,
+      r: 2.8,
+    }));
+
+    return { nodes: [center, ...satellites], edges, pulses };
   }, []);
 
   return (
-    <div className="neuron-network-orb-container">
-      <svg ref={svgRef} viewBox="0 0 200 200" className="neuron-network-orb" aria-hidden="true">
+    <div className="neuron-network-orb-container" aria-hidden="true">
+      <svg className="neuron-network-orb" viewBox="0 0 200 200">
         <defs>
-          <radialGradient id="orb-gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-            <stop offset="0%" stopColor="#fff" stopOpacity="1" />
-            <stop offset="60%" stopColor="#13ffe5" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#005d7f" stopOpacity="0.7" />
-          </radialGradient>
-          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2.5" result="blur" />
             <feMerge>
-              <feMergeNode in="coloredBlur"/>
-              <feMergeNode in="SourceGraphic"/>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
         </defs>
-        {/* Axon paths */}
-        {axons.map((axon, i) => (
-          <path
-            key={i}
-            className="axon-path"
-            d={getPathD(axon.from, axon.to)}
-            filter="url(#glow)"
-          />
+
+        {/* Edges */}
+        {edges.map((e, idx) => (
+          <path key={`e-${idx}`} d={e.d} className="axon-path" />
         ))}
+
         {/* Nodes */}
-        {nodes.map((node, i) => (
-          <circle
-            key={i}
-            className={i === 0 ? "main-node" : "sub-node"}
-            cx={node.cx}
-            cy={node.cy}
-            r={node.r}
-            fill="url(#orb-gradient)"
-            filter="url(#glow)"
-          />
-        ))}
-        {/* Signal pulses */}
-        {signals.map((signal, i) => (
-          <circle
-            key={i}
-            className={`signal-pulse signal-pulse-${i}`}
-            r="7"
-          />
+        {nodes.map((n) =>
+          n.main ? (
+            <circle
+              key={n.id}
+              cx={n.x}
+              cy={n.y}
+              r={n.r}
+              className="main-node"
+              fill="none"
+            />
+          ) : (
+            <circle
+              key={n.id}
+              cx={n.x}
+              cy={n.y}
+              r={n.r}
+              className="sub-node"
+              fill="none"
+            />
+          )
+        )}
+
+        {/* Animated pulses (CSS keyframes handle motion) */}
+        {pulses.map((p) => (
+          <circle key={p.key} r={p.r} className={p.className} />
         ))}
       </svg>
-      <div className="neuron-orb-label">Activate VERA</div>
+
+      <div className="neuron-orb-label">VERA</div>
       <div
         className="neuron-orb-activation-area"
         tabIndex={0}
-        role="button"
-        aria-label="Activate VERA"
-        onClick={onActivate}
-        onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && onActivate?.()}
+        aria-label="decorative neuron orb"
       />
     </div>
   );
