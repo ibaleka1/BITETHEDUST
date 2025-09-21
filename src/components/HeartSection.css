@@ -1,22 +1,83 @@
 .heart-section {
-  margin: 3rem 0;
-  background: radial-gradient(800px 400px at 50% 0%, rgba(255,183,213,0.12), transparent 60%);
-  color: #fff;
-  padding: 1.25rem;
-  border-radius: 16px;
-  border: 1px solid rgba(155,89,182,0.35);
-}
-.heart-title {
+  padding: 6rem 2rem;
+  background: linear-gradient(
+    180deg,
+    rgba(155, 89, 182, 0.05) 0%,
+    rgba(10, 14, 39, 0.9) 100%
+  );
   text-align: center;
-  color: var(--vera-neural-blue);
-  font-size: 2rem;
-  text-shadow: 0 0 8px var(--vera-glow-pink);
+  position: relative;
+  z-index: 1;
+}
+
+.heart-title {
+  font-size: 3rem;
+  font-weight: 200;
+  background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 0.75rem;
 }
-.heart-text {
-  max-width: 900px;
-  margin: 0 auto;
-  color: #eaeaea;
+
+.heart-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-soft);
+  margin-bottom: 3rem;
+}
+
+.heart-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.heart-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 2rem;
+  max-width: 340px;
   text-align: center;
-  line-height: 1.7;
+  backdrop-filter: blur(20px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.heart-card:hover,
+.heart-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(155, 89, 182, 0.25);
+}
+
+.heart-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  border: 3px solid var(--vera-neural-blue);
+  box-shadow: 0 0 20px rgba(100, 181, 246, 0.3);
+}
+
+.heart-name {
+  font-size: 1.5rem;
+  margin: 0.5rem 0 0.25rem;
+  color: #fff;
+}
+
+.heart-role {
+  font-size: 1rem;
+  color: var(--vera-lavender);
+  margin-bottom: 1rem;
+}
+
+.heart-bio {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .heart-title { font-size: 2.3rem; }
+  .heart-subtitle { font-size: 1.1rem; }
 }
