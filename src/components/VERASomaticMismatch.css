@@ -1,0 +1,62 @@
+.vera-somatic-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 56px;
+}
+
+.vera-orb {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 60% 40%, #13ffe5 0%, #232046 75%);
+  box-shadow: 0 0 30px 8px #13ffe577;
+  transition: box-shadow 0.35s cubic-bezier(.68,-0.55,.27,1.55), filter 0.35s;
+  filter: blur(0.5px);
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.vera-orb-glow {
+  box-shadow: 0 0 70px 35px #13ffe5aa, 0 0 140px 75px #fff6;
+  filter: blur(1.5px);
+}
+
+.vera-orb-cue {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  right: 0;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 1.05em;
+  text-shadow: 0 2px 16px #13ffe577;
+  pointer-events: none;
+}
+
+.vera-somatic-btn {
+  margin-top: 36px;
+  background: #13ffe5;
+  color: #232046;
+  border: none;
+  border-radius: 10px;
+  padding: 13px 30px;
+  font-weight: 700;
+  font-size: 1.08em;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 2px 18px #13ffe533;
+  transition: background 0.2s;
+}
+.vera-somatic-btn:hover {
+  background: #232046;
+  color: #13ffe5;
+}
+.vera-somatic-notice {
+  margin-top: 30px;
+  color: #ffd966;
+  font-weight: 600;
+}
