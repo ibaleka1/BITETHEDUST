@@ -1,34 +1,51 @@
-/* Animated breathing orb for 4-4-4 rhythm. Accessible. */
+/* Animated breathing orb (4-4-4 rhythm). Accessible + reduced-motion safe. */
 .breathing-orb-section {
   text-align: center;
   margin: 3rem 0;
 }
+
 .breathing-orb-title {
   font-size: 2rem;
   color: var(--vera-neural-blue);
   margin-bottom: 1rem;
 }
+
 .breathing-orb {
-  width: 220px;
-  height: 220px;
+  --orb-size: 220px;
+  width: var(--orb-size);
+  height: var(--orb-size);
   margin: 0 auto 1.5rem;
   border-radius: 50%;
-  background: radial-gradient(circle at 60% 40%, var(--vera-glow-pink), var(--vera-neural-blue) 80%, transparent 100%);
-  transition: box-shadow 0.3s;
-  animation: inhale 12s infinite cubic-bezier(.4,0,.2,1);
+  background: radial-gradient(
+    circle at 60% 40%,
+    var(--vera-glow-pink),
+    var(--vera-neural-blue) 80%,
+    transparent 100%
+  );
   box-shadow: 0 0 60px 20px var(--vera-lavender);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  animation: breathing-444 12s cubic-bezier(.4,0,.2,1) infinite;
 }
+
+/* Optional “active” visual boost when the user starts the exercise */
 .breathing-orb.active {
   box-shadow: 0 0 120px 40px var(--vera-neural-blue);
 }
-@keyframes inhale {
-  0% { transform: scale(1);}
-  17% { transform: scale(1.2);}
-  33% { transform: scale(1.2);}
-  50% { transform: scale(1);}
-  67% { transform: scale(0.85);}
-  100% { transform: scale(1);}
+
+/* Pause support (e.g., when user presses a Pause button) */
+.breathing-orb.paused {
+  animation-play-state: paused;
 }
+
+/* 4-4-4: inhale (0–4s), hold (4–8s), exhale (8–12s) */
+@keyframes breathing-444 {
+  0%   { transform: scale(1);   }
+  33%  { transform: scale(1.2); }  /* end inhale */
+  66%  { transform: scale(1.2); }  /* end hold */
+  100% { transform: scale(1);   }  /* end exhale */
+}
+
+/* Control button */
 .breathing-orb-btn {
   background: linear-gradient(90deg, var(--vera-lavender), var(--vera-neural-blue));
   border: none;
@@ -38,15 +55,31 @@
   padding: 0.7em 2.2em;
   cursor: pointer;
   margin-bottom: 1em;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s ease, transform 0.1s ease;
 }
+
 .breathing-orb-btn:hover,
-.breathing-orb-btn:focus {
+.breathing-orb-btn:focus-visible {
   box-shadow: 0 4px 18px var(--vera-glow-pink);
   outline: 2px solid var(--vera-neural-blue);
+  outline-offset: 2px;
 }
+
+.breathing-orb-btn:active {
+  transform: translateY(1px);
+}
+
+/* Helper copy */
 .breathing-orb-desc {
   color: var(--text-soft);
   font-size: 1.1em;
   margin-top: 1em;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .breathing-orb {
+    animation: none;
+    transform: none;
+  }
 }
