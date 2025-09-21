@@ -1,18 +1,24 @@
+import React, { useState } from "react";
+import "./TestBanner.css";
+
 export default function TestBanner() {
+  const [visible, setVisible] = useState(true);
+
+  if (!visible) return null;
+
   return (
-    <div className="test-banner" style={{
-      background: "linear-gradient(90deg, #FFD700, #FFA500)",
-      color: "#000",
-      textAlign: "center",
-      padding: "12px",
-      position: "fixed",
-      top: 0,
-      width: "100%",
-      zIndex: 10000,
-      fontWeight: 600,
-      boxShadow: "0 2px 10px rgba(0,0,0,0.3)"
-    }}>
-      ⚠️ TEST MODE - Use Stripe test card: 4242 4242 4242 4242 • Any future date • Any CVC
+    <div className="test-banner" role="region" aria-label="Test mode notification">
+      <p className="test-banner-text">
+        <strong>Test Mode Enabled</strong> • Use Stripe test card:{" "}
+        <code>4242 4242 4242 4242</code> • Any future date • Any CVC
+      </p>
+      <button
+        className="test-banner-close"
+        aria-label="Close test mode banner"
+        onClick={() => setVisible(false)}
+      >
+        ✕
+      </button>
     </div>
   );
 }
