@@ -1,11 +1,120 @@
-.neuron-orb {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--vera-neural-blue) 0 60%, var(--vera-purple) 100%, transparent 120%);
-  box-shadow: 0 0 18px 8px var(--vera-glow-pink),
-              0 0 32px 0 var(--vera-lavender) inset;
-  display: inline-block;
-  margin: 0 6px;
-  vertical-align: middle;
+.neuron-network-orb-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 64px;
+}
+
+.neuron-network-orb {
+  width: 260px;
+  height: 260px;
+  background: transparent;
+  overflow: visible;
+  z-index: 1;
+}
+
+.axon-path {
+  stroke: #6ffbffcc;
+  stroke-width: 5;
+  opacity: 0.7;
+  stroke-linecap: round;
+  fill: none;
+  filter: blur(0.5px) drop-shadow(0 0 12px #14ffe3cc);
+  transition: d 0.35s cubic-bezier(.7,0,.3,1);
+  animation: axon-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes axon-glow {
+  0% { stroke: #6ffbffcc; }
+  50% { stroke: #13ffe5; }
+  100% { stroke: #6ffbffcc; }
+}
+
+.main-node {
+  stroke: #fff;
+  stroke-width: 3.5;
+  filter: url(#glow);
+  opacity: 1;
+  z-index: 2;
+}
+
+.sub-node {
+  stroke: #13ffe5;
+  stroke-width: 2.5;
+  opacity: 0.92;
+  filter: url(#glow);
+}
+
+.signal-pulse {
+  fill: #fff;
+  opacity: 0.92;
+  filter: drop-shadow(0 0 16px #13ffe5cc);
+  transform: translate(100px,100px);
+}
+
+.signal-pulse-0 { animation: signal-move0 2.2s linear infinite; }
+.signal-pulse-1 { animation: signal-move1 2.5s linear infinite 0.7s; }
+.signal-pulse-2 { animation: signal-move2 2.3s linear infinite 1.2s; }
+.signal-pulse-3 { animation: signal-move3 2.4s linear infinite 1.7s; }
+.signal-pulse-4 { animation: signal-move4 2.6s linear infinite 0.9s; }
+.signal-pulse-5 { animation: signal-move5 2.7s linear infinite 1.3s; }
+.signal-pulse-6 { animation: signal-move6 2.1s linear infinite 0.6s; }
+
+/* pulse motions (center to various nodes) */
+@keyframes signal-move0 {
+  0% { transform: translate(100px,100px); opacity: 0.9;}
+  80% { transform: translate(40px,50px); opacity: 1;}
+  100% { transform: translate(100px,100px); opacity: 0;}
+}
+@keyframes signal-move1 {
+  0% { transform: translate(100px,100px);}
+  80% { transform: translate(160px,60px);}
+  100% { transform: translate(100px,100px);}
+}
+@keyframes signal-move2 {
+  0% { transform: translate(100px,100px);}
+  80% { transform: translate(50px,160px);}
+  100% { transform: translate(100px,100px);}
+}
+@keyframes signal-move3 {
+  0% { transform: translate(100px,100px);}
+  80% { transform: translate(170px,160px);}
+  100% { transform: translate(100px,100px);}
+}
+@keyframes signal-move4 {
+  0% { transform: translate(100px,100px);}
+  80% { transform: translate(100px,190px);}
+  100% { transform: translate(100px,100px);}
+}
+@keyframes signal-move5 {
+  0% { transform: translate(100px,100px);}
+  80% { transform: translate(30px,100px);}
+  100% { transform: translate(100px,100px);}
+}
+@keyframes signal-move6 {
+  0% { transform: translate(100px,100px);}
+  80% { transform: translate(180px,100px);}
+  100% { transform: translate(100px,100px);}
+}
+
+.neuron-orb-label {
+  margin-top: 18px;
+  color: #13ffe5;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15em;
+  letter-spacing: 1px;
+  filter: drop-shadow(0 0 3px #0ff);
+}
+
+.neuron-orb-activation-area {
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 260px; height: 260px;
+  cursor: pointer;
+  z-index: 4;
+  background: transparent;
+}
+.neuron-orb-activation-area:focus {
+  outline: 2px solid #13ffe5;
 }
