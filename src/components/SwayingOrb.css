@@ -1,62 +1,86 @@
-/* Swaying Orbit: full-screen modal with floating particle orbit, gentle sway (6 bpm). */
-.swaying-orbit-open {
-  background: linear-gradient(90deg, var(--vera-neural-blue), var(--vera-lavender));
+.sway-section {
+  padding: 0.25rem 0 0.5rem;
+}
+
+.sway-open-btn, .sway-close-btn {
+  background: linear-gradient(135deg, var(--vera-purple), var(--vera-neural-blue));
   border: none;
   color: #fff;
-  border-radius: 32px;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 0.7em 2.2em;
+  padding: 0.55rem 1.1rem;
+  border-radius: 10px;
   cursor: pointer;
-  margin: 2em auto 1em;
-  display: block;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
-.swaying-orbit-modal {
+.sway-open-btn:hover, .sway-open-btn:focus-visible,
+.sway-close-btn:hover, .sway-close-btn:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 0 14px var(--vera-glow-pink);
+  outline: none;
+}
+
+.sway-modal {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 2000;
-  background: rgba(10,14,39,0.92);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: fadeIn 0.25s;
+  inset: 0;
+  z-index: 50;
 }
-.swaying-orbit-content {
-  position: relative;
-  background: rgba(21,24,50,0.85);
-  padding: 2.5em 3em 2em;
-  border-radius: 32px;
-  min-width: 320px;
-  box-shadow: 0 0 36px 12px var(--vera-lavender);
-  text-align: center;
+
+.sway-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 8, 24, 0.75);
+  backdrop-filter: blur(6px);
 }
-.swaying-orbit-particles {
-  width: 160px; height: 160px;
-  margin: 0 auto 1.6em;
-  border-radius: 50%;
-  position: relative;
-  background: radial-gradient(circle, var(--vera-glow-pink) 0 10%, transparent 80%);
-  animation: sway 10s infinite ease-in-out;
+
+.sway-content {
+  position: absolute;
+  inset: 8% 6%;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(155, 89, 182, 0.35);
+  background: radial-gradient(1200px 800px at 50% 50%, rgba(100,181,246,0.18), rgba(10,14,39,0.95));
+  box-shadow: 0 0 40px rgba(255, 183, 213, 0.2);
 }
+
+.sway-orbit {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  animation: sway 10s ease-in-out infinite;
+  transform-origin: 50% 90%;
+}
+
 @keyframes sway {
-  0% { transform: rotate(-8deg);}
-  15% { transform: rotate(8deg);}
-  30% { transform: rotate(-5deg);}
-  50% { transform: rotate(5deg);}
-  70% { transform: rotate(-8deg);}
-  100% { transform: rotate(-8deg);}
+  0%   { transform: rotate(-3deg) translateX(-2%); }
+  50%  { transform: rotate(3deg)  translateX(2%); }
+  100% { transform: rotate(-3deg) translateX(-2%); }
 }
-.swaying-orbit-close {
-  background: none;
-  border: 2px solid var(--vera-neural-blue);
-  color: var(--vera-neural-blue);
-  border-radius: 24px;
-  padding: 0.4em 1.8em;
-  margin-top: 1em;
-  font-size: 1em;
-  cursor: pointer;
+
+/* floating particles */
+.sway-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--vera-neural-blue), var(--vera-purple));
+  opacity: 0.9;
+  filter: drop-shadow(0 0 6px var(--vera-neural-blue));
+  animation: float 12s linear infinite;
 }
-@media (max-width: 600px) {
-  .swaying-orbit-content { min-width: 90vw; padding: 1.2em 0.5em 1em; }
-  .swaying-orbit-particles { width: 110px; height: 110px; }
+@keyframes float {
+  from { transform: translateY(100vh) translateX(0); }
+  to   { transform: translateY(-20vh) translateX(10vw); }
+}
+
+/* scatter positions + speeds */
+.sway-particle.p1 { left: 10%; animation-duration: 10s; }
+.sway-particle.p2 { left: 22%; animation-duration: 12s; }
+.sway-particle.p3 { left: 35%; animation-duration: 14s; }
+.sway-particle.p4 { left: 50%; animation-duration: 11s; }
+.sway-particle.p5 { left: 66%; animation-duration: 13s; }
+.sway-particle.p6 { left: 82%; animation-duration: 15s; }
+
+.sway-controls {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
 }
