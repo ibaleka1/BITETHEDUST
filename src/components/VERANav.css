@@ -1,0 +1,242 @@
+:root {
+  /* Fallbacks in case they aren't defined globally yet */
+  --vera-deep-space: #0a0e27;
+  --vera-midnight: #151832;
+  --vera-purple: #9b59b6;
+  --vera-lavender: #b19cd9;
+  --vera-neural-blue: #64b5f6;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-soft: rgba(255, 255, 255, 0.75);
+  --text-muted: rgba(255, 255, 255, 0.45);
+}
+
+/* Skip link */
+.vera-skip {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+.vera-skip:focus {
+  left: 12px;
+  top: calc(var(--nav-offset, 48px) + 8px);
+  z-index: 10001;
+  background: #fff;
+  color: #000;
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+/* Nav wrapper fixed under the test banner */
+.vera-nav {
+  position: fixed;
+  top: var(--nav-offset, 48px); /* aligns with test banner height */
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 14, 39, 0.98) 0%,
+    rgba(10, 14, 39, 0.9) 100%
+  );
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  transition: box-shadow 0.25s ease, background 0.25s ease, padding 0.25s ease;
+}
+.vera-nav.scrolled {
+  padding: 0.9rem 1.5rem;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* Inner layout */
+.vera-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto; /* brand | links | cta | burger */
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Brand */
+.vera-logo {
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: none;
+  padding: 0;
+  line-height: 1;
+  color: transparent; /* ensures only gradient shows */
+}
+
+/* Desktop links */
+.vera-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-self: start;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1rem;
+}
+.vera-link {
+  color: var(--text-soft);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.vera-link:hover,
+.vera-link:focus-visible {
+  color: var(--vera-lavender);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+/* Desktop CTA */
+.vera-cta {
+  justify-self: end;
+}
+.vera-cta-btn {
+  padding: 0.7rem 1.4rem;
+  border: none;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+  box-shadow: 0 10px 32px rgba(155, 89, 182, 0.35);
+}
+.vera-cta-btn:hover,
+.vera-cta-btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 44px rgba(155, 89, 182, 0.5);
+  outline: none;
+}
+
+/* Burger (mobile) */
+.vera-burger {
+  display: none;
+  width: 46px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.vera-burger:hover,
+.vera-burger:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  outline: none;
+}
+.vera-burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  margin: 3px 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.vera-burger.open span:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+}
+.vera-burger.open span:nth-child(2) {
+  opacity: 0;
+}
+.vera-burger.open span:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+/* Mobile drawer */
+.vera-drawer {
+  position: fixed;
+  inset: 0;
+  top: calc(var(--nav-offset, 48px) + 60px);
+  background: linear-gradient(
+    180deg,
+    rgba(10, 14, 39, 0.98) 0%,
+    rgba(21, 24, 50, 0.97) 100%
+  );
+  border-top: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  transform: translateY(-8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 999;
+  padding: 1rem 1.25rem 2rem;
+}
+.vera-drawer.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.vera-drawer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0 1rem 0;
+  display: grid;
+  gap: 0.4rem;
+}
+.vera-drawer-link {
+  display: block;
+  width: 100%;
+  padding: 0.9rem 0.5rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text-primary);
+  border: 1px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.vera-drawer-link:hover,
+.vera-drawer-link:focus-visible {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--glass-border);
+  outline: none;
+}
+
+.vera-drawer-cta {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 14px;
+  border: none;
+  color: #fff;
+  background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+  font-weight: 700;
+  box-shadow: 0 12px 32px rgba(155, 89, 182, 0.35);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.vera-drawer-cta:hover,
+.vera-drawer-cta:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 44px rgba(155, 89, 182, 0.5);
+  outline: none;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .vera-links {
+    display: none;
+  }
+  .vera-cta {
+    display: none;
+  }
+  .vera-burger {
+    display: inline-flex;
+    justify-self: end;
+  }
+  .vera-nav-inner {
+    grid-template-columns: auto 1fr auto; /* brand | filler | burger */
+  }
+}
