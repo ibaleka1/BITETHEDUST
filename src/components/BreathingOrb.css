@@ -1,4 +1,4 @@
-/* Animated breathing orb (4-4-4 rhythm). Accessible + reduced-motion safe. */
+/* Animated breathing orb (true 4-4-4 rhythm). Accessible + reduced-motion safe */
 .breathing-orb-section {
   text-align: center;
   margin: 3rem 0;
@@ -27,22 +27,22 @@
   animation: breathing-444 12s cubic-bezier(.4,0,.2,1) infinite;
 }
 
-/* Optional “active” visual boost when the user starts the exercise */
+/* Boosted state (e.g. when user activates orb) */
 .breathing-orb.active {
   box-shadow: 0 0 120px 40px var(--vera-neural-blue);
 }
 
-/* Pause support (e.g., when user presses a Pause button) */
+/* Pause animation without removing styles */
 .breathing-orb.paused {
   animation-play-state: paused;
 }
 
-/* 4-4-4: inhale (0–4s), hold (4–8s), exhale (8–12s) */
+/* 4-4-4 cycle: inhale 0–4s, hold 4–8s, exhale 8–12s */
 @keyframes breathing-444 {
-  0%   { transform: scale(1);   }
-  33%  { transform: scale(1.2); }  /* end inhale */
-  66%  { transform: scale(1.2); }  /* end hold */
-  100% { transform: scale(1);   }  /* end exhale */
+  0%   { transform: scale(1); }
+  33%  { transform: scale(1.2); } /* end inhale */
+  66%  { transform: scale(1.2); } /* end hold */
+  100% { transform: scale(1); }   /* end exhale */
 }
 
 /* Control button */
@@ -69,14 +69,14 @@
   transform: translateY(1px);
 }
 
-/* Helper copy */
+/* Helper text */
 .breathing-orb-desc {
   color: var(--text-soft);
   font-size: 1.1em;
   margin-top: 1em;
 }
 
-/* Respect users who prefer reduced motion */
+/* Respect system reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
   .breathing-orb {
     animation: none;
