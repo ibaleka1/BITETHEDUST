@@ -1,0 +1,45 @@
+.universe-section {
+  position: relative;
+  margin: 3rem 0 1rem;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(155,89,182,0.35);
+  background: linear-gradient(180deg, var(--vera-deep-space), var(--vera-midnight));
+  height: 220px;
+  color: #fff;
+}
+.universe-sky { position: absolute; inset: 0; overflow: hidden; }
+
+.star {
+  position: absolute;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff, rgba(255,255,255,0.3));
+  opacity: 0.8;
+  animation: drift 12s linear infinite;
+}
+@keyframes drift {
+  from { transform: translateY(40px); }
+  to   { transform: translateY(-220px); }
+}
+.star.s1 { left: 5%;  animation-duration: 10s; }
+.star.s2 { left: 20%; animation-duration: 12s; }
+.star.s3 { left: 35%; animation-duration: 14s; }
+.star.s4 { left: 50%; animation-duration: 11s; }
+.star.s5 { left: 70%; animation-duration: 13s; }
+.star.s6 { left: 85%; animation-duration: 15s; }
+
+.universe-copy {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.universe-copy h3 {
+  margin: 0 0 0.25rem;
+  color: var(--vera-neural-blue);
+  text-shadow: 0 0 8px var(--vera-glow-pink);
+}
+.universe-copy p { margin: 0; color: #eaeaea; }
