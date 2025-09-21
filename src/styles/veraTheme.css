@@ -23,6 +23,33 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Add further global styles and responsive rules here (copy from your HTML) */
+a {
+  color: var(--vera-neural-blue);
+  text-decoration: underline;
+  transition: color 0.15s;
+}
+a:hover, a:focus {
+  color: var(--vera-soft-gold);
+}
+
+button {
+  font-family: inherit;
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *:before, *:after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
