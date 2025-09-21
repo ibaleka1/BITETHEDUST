@@ -1,0 +1,66 @@
+.vera-companion {
+  padding: 4rem 2rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(155, 89, 182, 0.02) 100%);
+  position: relative;
+  z-index: 1;
+}
+
+.vc-header { text-align: center; margin-bottom: 2rem; }
+.vc-header h2 {
+  font-size: 3rem; font-weight: 200;
+  background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.vc-header .sub { color: var(--text-soft); font-style: italic; margin-top: .5rem; }
+
+.controls {
+  margin: 1.25rem auto 0;
+  display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; align-items: center;
+}
+.control { display: flex; gap: .5rem; align-items: center; color: var(--text-soft); }
+.control label { font-size: .95rem; }
+.control select {
+  background: rgba(255,255,255,.06); color: #fff; border: 1px solid var(--glass-border);
+  padding: .5rem .75rem; border-radius: 12px;
+}
+.pill {
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(135deg, rgba(155,89,182,.2), rgba(100,181,246,.15));
+  color: #fff; padding: .6rem 1rem; border-radius: 999px; cursor: pointer;
+}
+.pill.active { box-shadow: 0 0 0 6px rgba(155, 89, 182, 0.15); }
+.pill.speaking { box-shadow: 0 0 0 6px rgba(100, 181, 246, 0.15); }
+
+.vc-chat {
+  max-width: 900px; margin: 1.5rem auto 0;
+  background: linear-gradient(135deg, rgba(10,14,39,.95) 0%, rgba(21,24,50,.9) 100%);
+  border-radius: 30px; padding: 2rem;
+  border: 1px solid var(--glass-border); backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+}
+
+.messages {
+  height: 400px; overflow-y: auto; margin-bottom: 1.25rem; padding: 1rem;
+  background: rgba(0,0,0,.4); border-radius: 20px;
+}
+.msg { margin-bottom: 1rem; }
+.msg .bubble { padding: 1rem 1.25rem; border-radius: 16px; }
+.msg.assistant .bubble {
+  background: linear-gradient(135deg, rgba(155,89,182,.3), rgba(100,181,246,.2));
+  border: 1px solid rgba(155,89,182,.3); margin-right: 20%;
+}
+.msg.user { text-align: right; }
+.msg.user .bubble {
+  background: rgba(100,181,246,.25); border: 1px solid rgba(100,181,246,.3); margin-left: 20%;
+}
+
+.composer { display: flex; gap: .75rem; }
+.composer input {
+  flex: 1; padding: 1rem 1.25rem; border-radius: 999px;
+  background: rgba(255,255,255,.05); border: 1px solid var(--glass-border);
+  color: #fff; font-size: 1rem;
+}
+.composer button {
+  padding: .9rem 1.5rem; border-radius: 999px; border: none; color: #fff; cursor: pointer;
+  background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+}
