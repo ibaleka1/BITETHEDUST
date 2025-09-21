@@ -1,0 +1,13 @@
+/* Copy your CSS variables and common styles here */
+:root {
+  --vera-deep-space: #0A0E27;
+  /* ...rest of your variables */
+}
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: radial-gradient(ellipse at top, var(--vera-midnight) 0%, var(--vera-deep-space) 40%, #000 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
