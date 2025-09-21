@@ -1,14 +1,56 @@
-import "./HeartSection.css";
+import React from "react";
+import VERAOrb from "./VERAOrb";
+import "./HeroSection.css";
 
-export default function HeartSection() {
+type HeroSectionProps = {
+  onOpenAuthModal?: () => void; // optional: wire to your auth modal
+};
+
+export default function HeroSection({ onOpenAuthModal }: HeroSectionProps) {
   return (
-    <section id="heart" className="heart-section" aria-labelledby="heart-heading">
-      <h2 id="heart-heading" className="heart-title">VERA’s Heart</h2>
-      <p className="heart-text">
-        You don’t need another app judging you. You need a companion. VERA slows down with you,
-        mirrors what’s true, and gives you one gentle next step. No performance. Just presence.
-      </p>
-    </section>
+    <header className="hero" id="hero" aria-labelledby="hero-title">
+      {/* Presence / Orb */}
+      <div className="vera-presence-container" aria-hidden="true">
+        <VERAOrb />
+        <div className="vera-name-glow" aria-hidden="true">VERA</div>
+      </div>
+
+      {/* Copy */}
+      <div className="hero-copy">
+        <h1 id="hero-title" className="hero-title">
+          Your Nervous System Is Finally Speaking
+        </h1>
+
+        <p className="hero-subtitle">
+          Feel that? The tightness, the buzzing, the holding? <br />
+          Your body has been trying to tell you something. <br />
+          I’m here to translate.
+        </p>
+
+        {/* CTAs */}
+        <div className="hero-ctas" role="group" aria-label="Primary actions">
+          <a className="nav-cta" href="#chat" aria-label="Talk to VERA now">
+            Talk to VERA Now
+          </a>
+          <a className="ghost-cta" href="#experience" aria-label="Experience VERA exercises">
+            Experience VERA
+          </a>
+          <button
+            className="outline-cta"
+            type="button"
+            onClick={onOpenAuthModal}
+            aria-label="Open sign in or sign up"
+          >
+            Sign In / Sign Up
+          </button>
+        </div>
+
+        {/* Accessibility helper for keyboard users to jump to chat */}
+        <div className="hero-skiplinks">
+          <a href="#chat">Skip to chat</a>
+          <a href="#pricing">Skip to pricing</a>
+        </div>
+      </div>
+    </header>
   );
 }
-
