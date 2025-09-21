@@ -1,70 +1,98 @@
-import React from "react";
-import "./VERAFooter.css";
-
-export default function VERAFooter() {
-  return (
-    <footer className="vera-footer">
-      <div className="vera-footer-container">
-        {/* Brand */}
-        <div className="vera-footer-brand">
-          <span className="vera-footer-logo">VERA</span>
-          <p className="vera-footer-tagline">
-            Your Companion in nervous system repair and emotional safety.
-          </p>
-        </div>
-
-        {/* Navigation */}
-        <nav
-          className="vera-footer-nav"
-          aria-label="Footer navigation"
-        >
-          <ul>
-            <li><a href="#experience">Exercises</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#methodology">Methodology</a></li>
-            <li><a href="#heart">About</a></li>
-          </ul>
-        </nav>
-
-        {/* Social Links */}
-        <div className="vera-footer-social">
-          <a
-            href="https://tiktok.com/@regulatetoelevate"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="TikTok"
-          >
-            <i className="fab fa-tiktok" aria-hidden="true"></i>
-          </a>
-          <a
-            href="https://instagram.com/regulatetoelevate"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
-            <i className="fab fa-instagram" aria-hidden="true"></i>
-          </a>
-          <a
-            href="https://youtube.com/@regulatetoelevate"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="YouTube"
-          >
-            <i className="fab fa-youtube" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-
-      {/* Legal & smallprint */}
-      <div className="vera-footer-bottom">
-        <p>
-          © {new Date().getFullYear()} Regulate to Elevate — All rights reserved.
-        </p>
-        <p>
-          Built with love, science, and nervous system integrity.
-        </p>
-      </div>
-    </footer>
+.vera-footer {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 14, 39, 0.95) 0%,
+    rgba(21, 24, 50, 0.98) 100%
   );
+  color: var(--text-soft);
+  padding: 3rem 1.5rem 2rem;
+  margin-top: 4rem;
+  border-top: 2px solid var(--vera-lavender);
+}
+
+.vera-footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Brand */
+.vera-footer-brand {
+  max-width: 300px;
+}
+.vera-footer-logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--vera-neural-blue), var(--vera-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.vera-footer-tagline {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* Nav */
+.vera-footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.vera-footer-nav a {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.vera-footer-nav a:hover,
+.vera-footer-nav a:focus-visible {
+  color: #fff;
+  outline: none;
+}
+
+/* Social */
+.vera-footer-social {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.vera-footer-social a {
+  color: var(--text-soft);
+  font-size: 1.4rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.vera-footer-social a:hover,
+.vera-footer-social a:focus-visible {
+  color: var(--vera-lavender);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* Bottom */
+.vera-footer-bottom {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1.2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .vera-footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .vera-footer-nav ul {
+    grid-template-columns: repeat(2, auto);
+    gap: 0.8rem 2rem;
+  }
 }
