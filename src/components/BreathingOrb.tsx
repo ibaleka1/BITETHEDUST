@@ -1,54 +1,60 @@
-import React, { useEffect, useState } from "react";
+// Animated breathing orb with 4-4-4 rhythm. Accessible, TTS coaching if speaker enabled.
+import { useRef, useState, useContext } from "react";
+import { VeraContext } from "../pages/_app";
 import "./BreathingOrb.css";
 
-const PHASES = [
-  { name: "Breathe In", duration: 4, color: "#76c7ff" },
-  { name: "Hold", duration: 4, color: "#88ffe0" },
-  { name: "Breathe Out", duration: 6, color: "#ffb6c1" },
-];
+const coachingLine = "Let's breathe together. Inhale slowly for four, hold, then exhale gently.";
 
 export default function BreathingOrb() {
-  const [phase, setPhase] = useState(0);
-  const [count, setCount] = useState(PHASES[0].duration);
+  const [playing, setPlaying] = useState(false);
+  const { speakerOn } = useContext(VeraContext);
+  const orbRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCount((c) => {
-        if (c <= 1) {
-          setPhase((p) => (p + 1) % PHASES.length);
-          return PHASES[(phase + 1) % PHASES.length].duration;
-        }
-        return c - 1;
-      });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [phase]);
-
-  // For smooth animation, calculate orb scale
-  let scale = 1;
-  if (PHASES[phase].name === "Breathe In") {
-    scale = 1 + 0.5 * (1 - (count - 1) / (PHASES[phase].duration - 1));
-  } else if (PHASES[phase].name === "Breathe Out") {
-    scale = 1.5 - 0.5 * (1 - (count - 1) / (PHASES[phase].duration - 1));
-  } else {
-    scale = 1.5;
+  function speak() {
+    if (!speakerOn) return;
+    if ("speechSynthesis" in window) {
+      const utter = new SpeechSynthesisUtterance(coachingLine);
+      utter.lang = "en-US";
+      utter.rate = 1;
+      window.speechSynthesis.speak(utter);
+    }
   }
 
-  // Color transitions
-  const orbStyle = {
-    transform: `scale(${scale})`,
-    background: `radial-gradient(circle at 60% 40%, ${PHASES[phase].color} 60%, #27215a 100%)`,
-    transition: "background 1s, transform 1s cubic-bezier(.7,0,.3,1)",
-    boxShadow: `0 0 60px 10px ${PHASES[phase].color}66, 0 0 100px 30px #fff3`,
-  };
+  function start() {
+    setPlaying(true);
+    speak();
+  }
+
+  function stop() {
+    setPlaying(false);
+    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+  }
 
   return (
-    <div className="breathing-orb-container">
-      <div className="breathing-orb" style={orbStyle}></div>
-      <div className="breathing-orb-text">
-        <div className="breathing-orb-phase">{PHASES[phase].name}</div>
-        <div className="breathing-orb-count">{count}</div>
+    <section id="breathing" className="breathing-orb-section" aria-labelledby="breathing-heading">
+      <h2 id="breathing-heading" className="breathing-orb-title">Breathing Exercise</h2>
+      <div
+        ref={orbRef}
+        className={`breathing-orb${playing ? " active" : ""}`}
+        aria-label="Breathing Orb"
+        tabIndex={0}
+        role="img"
+        aria-live="polite"
+      />
+      <div>
+        {playing ? (
+          <button className="breathing-orb-btn" onClick={stop} aria-label="Stop breathing exercise">
+            Stop
+          </button>
+        ) : (
+          <button className="breathing-orb-btn" onClick={start} aria-label="Breathe with me">
+            Breathe with me
+          </button>
+        )}
       </div>
-    </div>
+      <p className="breathing-orb-desc">
+        Inhale for four… hold for four… exhale for four. Let your breath guide you home.
+      </p>
+    </section>
   );
 }
