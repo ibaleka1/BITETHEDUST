@@ -1,0 +1,192 @@
+/* Root tokens assumed to exist on :root (from your index):
+   --vera-deep-space, --vera-midnight, --vera-purple, --vera-lavender,
+   --vera-neural-blue, --vera-glow-pink, --vera-soft-gold, --vera-emerald,
+   --glass-white, --glass-border, --text-primary, --text-soft, --text-muted
+*/
+
+.hero {
+  /* Accounts for your fixed test banner (48px) + nav height (~82px) */
+  margin-top: 130px;
+  min-height: calc(100vh - 130px);
+  display: grid;
+  place-items: center;
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  background: radial-gradient(
+    ellipse at top,
+    var(--vera-midnight) 0%,
+    var(--vera-deep-space) 50%,
+    #000 100%
+  );
+}
+
+/* Orb + VERA name */
+.vera-presence-container {
+  width: 500px;
+  height: 500px;
+  position: relative;
+  margin: 1rem auto 2rem;
+  pointer-events: none; /* visual only; not interactive */
+}
+
+.vera-name-glow {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 4rem;
+  font-weight: 100;
+  letter-spacing: 1em;
+  text-align: center;
+  padding-left: 1em; /* balances letter-spacing centering */
+  background: linear-gradient(
+    45deg,
+    #ffd700 0%,
+    #f8bbd0 20%,
+    #b19cd9 40%,
+    #9b59b6 60%,
+    #64b5f6 80%,
+    #10b981 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: nameShimmer 4s infinite linear;
+  filter: drop-shadow(0 0 10px rgba(155, 89, 182, 0.25));
+}
+
+@keyframes nameShimmer {
+  0%, 100% { filter: brightness(1) hue-rotate(0deg); }
+  50% { filter: brightness(1.4) hue-rotate(25deg); }
+}
+
+/* Copy block */
+.hero-copy {
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 200;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    var(--vera-lavender) 50%,
+    var(--vera-neural-blue) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-soft);
+  margin: 0 auto 2rem;
+}
+
+/* CTAs */
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-cta {
+  padding: 1rem 2.25rem;
+  background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
+  border: none;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 10px 40px rgba(155, 89, 182, 0.35);
+}
+.nav-cta:hover,
+.nav-cta:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 50px rgba(155, 89, 182, 0.5);
+  outline: none;
+}
+
+.ghost-cta {
+  padding: 1rem 2.25rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(
+    135deg,
+    rgba(155, 89, 182, 0.12),
+    rgba(100, 181, 246, 0.1)
+  );
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+.ghost-cta:hover,
+.ghost-cta:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--vera-lavender);
+  background: linear-gradient(
+    135deg,
+    rgba(155, 89, 182, 0.25),
+    rgba(100, 181, 246, 0.22)
+  );
+  outline: none;
+}
+
+.outline-cta {
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--vera-lavender);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.outline-cta:hover,
+.outline-cta:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(155, 89, 182, 0.35);
+  background: rgba(155, 89, 182, 0.08);
+  outline: none;
+}
+
+/* Skip links: visible enough but subtle under CTAs */
+.hero-skiplinks {
+  margin-top: 1rem;
+}
+.hero-skiplinks a {
+  color: var(--text-muted);
+  text-decoration: none;
+  margin: 0 .75rem;
+  font-size: 0.95rem;
+}
+.hero-skiplinks a:hover,
+.hero-skiplinks a:focus-visible {
+  color: var(--vera-lavender);
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .vera-presence-container { width: 420px; height: 420px; }
+  .hero-title { font-size: 3.25rem; }
+}
+
+@media (max-width: 768px) {
+  .hero { margin-top: 100px; min-height: calc(100vh - 100px); }
+  .vera-presence-container { width: 340px; height: 340px; }
+  .hero-title { font-size: 2.6rem; }
+  .hero-subtitle { font-size: 1.1rem; }
+}
+
+@media (max-width: 420px) {
+  .vera-presence-container { width: 300px; height: 300px; }
+  .hero-title { font-size: 2.2rem; }
+  .vera-name-glow { font-size: 3rem; letter-spacing: 0.65em; padding-left: .65em; }
+}
