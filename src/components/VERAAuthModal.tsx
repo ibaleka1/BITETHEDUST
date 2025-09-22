@@ -52,7 +52,9 @@ export default function VERAAuthModal({
     if (!isOpen) return;
     const original = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = original; };
+    return () => {
+      document.body.style.overflow = original;
+    };
   }, [isOpen]);
 
   // Focus first field
@@ -172,7 +174,8 @@ export default function VERAAuthModal({
       setTimeout(() => {
         if (plan === "explorer") window.location.href = "portal-explorer.html?success=true";
         else if (plan === "regulator") window.location.href = "portal-regulator.html?success=true";
-        else if (plan === "integrator") window.location.href = "portal-integrator.html?success=true";
+        else if (plan === "integrator")
+          window.location.href = "portal-integrator.html?success=true";
         else window.location.href = "portal-enterprise.html?success=true";
       }, 1000);
 
@@ -195,11 +198,7 @@ export default function VERAAuthModal({
       aria-labelledby="vera-auth-title"
       onMouseDown={handleOverlayClick}
     >
-      <div
-        ref={panelRef}
-        className="vera-auth-panel"
-        onMouseDown={(e) => e.stopPropagation()}
-      >
+      <div ref={panelRef} className="vera-auth-panel" onMouseDown={(e) => e.stopPropagation()}>
         <button
           className="vera-auth-close"
           aria-label="Close authentication modal"

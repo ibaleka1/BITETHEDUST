@@ -23,10 +23,12 @@ export default function SomaticMismatchPattern() {
     <div className="smp-card">
       <p className="smp-explainer">
         Somatic mismatch is when your body’s response doesn’t match the actual level of threat or
-        context. Gently name the mismatch without judgment. What does your body believe is happening?
-        What is actually happening?
+        context. Gently name the mismatch without judgment. What does your body believe is
+        happening? What is actually happening?
       </p>
-      <label htmlFor="smp-notes" className="smp-label">Journal</label>
+      <label htmlFor="smp-notes" className="smp-label">
+        Journal
+      </label>
       <textarea
         id="smp-notes"
         className="smp-textarea"
@@ -36,7 +38,9 @@ export default function SomaticMismatchPattern() {
         rows={5}
       />
       <div className="smp-actions">
-        <button className="smp-btn" type="button" onClick={() => setText("")}>Clear</button>
+        <button className="smp-btn" type="button" onClick={() => setText("")}>
+          Clear
+        </button>
       </div>
     </div>
   );

@@ -9,7 +9,8 @@ try {
   VeraCtx = require("../pages/_app").VeraContext;
 } catch {}
 const VeraContext =
-  VeraCtx?.VeraContext ?? React.createContext({ speakerOn: true, setSpeakerOn: (_: boolean) => {} });
+  VeraCtx?.VeraContext ??
+  React.createContext({ speakerOn: true, setSpeakerOn: (_: boolean) => {} });
 
 type Step = {
   id: string;
@@ -214,18 +215,27 @@ export default function VERASomaticMismatch({
   const percent = useMemo(() => {
     const total = STEPS.reduce((acc, s) => acc + (s.durationSec ?? 22), 0);
     const before = STEPS.slice(0, stepIndex).reduce((acc, s) => acc + (s.durationSec ?? 22), 0);
-    const current = Math.min((elapsed / (step.durationSec ?? 22)) * (100 / STEPS.length), 100 / STEPS.length);
-    return Math.min(100, ((before / total) * 100) + current);
+    const current = Math.min(
+      (elapsed / (step.durationSec ?? 22)) * (100 / STEPS.length),
+      100 / STEPS.length
+    );
+    return Math.min(100, (before / total) * 100 + current);
   }, [elapsed, step.durationSec, stepIndex]);
 
   return (
     <section className="smx-card" aria-labelledby="smx-heading">
       <header className="smx-head">
         <div>
-          <h3 id="smx-heading" className="smx-title">{title}</h3>
+          <h3 id="smx-heading" className="smx-title">
+            {title}
+          </h3>
           <p className="smx-sub">{subtitle}</p>
         </div>
-        <div className="smx-head-controls" role="group" aria-label="Somatic mismatch voice and power">
+        <div
+          className="smx-head-controls"
+          role="group"
+          aria-label="Somatic mismatch voice and power"
+        >
           <button
             className={`smx-btn ${playing ? "stop" : "start"}`}
             onClick={playing ? stop : start}
@@ -270,7 +280,7 @@ export default function VERASomaticMismatch({
         <div className="smx-timer" role="timer" aria-atomic="true">
           <span>Time: </span>
           <strong>{String(elapsed).padStart(2, "0")}s</strong>
-          <span className="muted"> / {(step.durationSec ?? 22)}s</span>
+          <span className="muted"> / {step.durationSec ?? 22}s</span>
         </div>
       </div>
 
@@ -330,7 +340,8 @@ export default function VERASomaticMismatch({
 
       {/* Safety note */}
       <p className="smx-note">
-        If anything feels intense, pause and orient to something pleasant. Small is powerful. Your body leads.
+        If anything feels intense, pause and orient to something pleasant. Small is powerful. Your
+        body leads.
       </p>
     </section>
   );

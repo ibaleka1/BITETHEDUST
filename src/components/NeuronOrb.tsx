@@ -111,23 +111,9 @@ export default function NeuronOrb() {
         {/* Nodes */}
         {nodes.map((n) =>
           n.main ? (
-            <circle
-              key={n.id}
-              cx={n.x}
-              cy={n.y}
-              r={n.r}
-              className="main-node"
-              fill="none"
-            />
+            <circle key={n.id} cx={n.x} cy={n.y} r={n.r} className="main-node" fill="none" />
           ) : (
-            <circle
-              key={n.id}
-              cx={n.x}
-              cy={n.y}
-              r={n.r}
-              className="sub-node"
-              fill="none"
-            />
+            <circle key={n.id} cx={n.x} cy={n.y} r={n.r} className="sub-node" fill="none" />
           )
         )}
 
@@ -138,11 +124,7 @@ export default function NeuronOrb() {
       </svg>
 
       <div className="neuron-orb-label">VERA</div>
-      <div
-        className="neuron-orb-activation-area"
-        tabIndex={0}
-        aria-label="decorative neuron orb"
-      />
+      <div className="neuron-orb-activation-area" tabIndex={0} aria-label="decorative neuron orb" />
     </div>
   );
 }

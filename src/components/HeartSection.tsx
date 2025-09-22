@@ -9,8 +9,8 @@ export default function HeartSection() {
           The Heart of VERA
         </h2>
         <p className="heart-subtitle">
-          Built by two visionaries who believe nervous system wisdom should be
-          accessible, beautiful, and alive.
+          Built by two visionaries who believe nervous system wisdom should be accessible,
+          beautiful, and alive.
         </p>
 
         <div className="heart-cards">
@@ -24,9 +24,8 @@ export default function HeartSection() {
             <h3 className="heart-name">Eva Leka</h3>
             <p className="heart-role">Founder & Methodology Architect</p>
             <p className="heart-bio">
-              Eva is the creator of Regulate to Elevate, designing a neuroscience-
-              grounded framework that makes complex trauma patterns visible,
-              practical, and transformable.
+              Eva is the creator of Regulate to Elevate, designing a neuroscience- grounded
+              framework that makes complex trauma patterns visible, practical, and transformable.
             </p>
           </div>
 
@@ -40,9 +39,8 @@ export default function HeartSection() {
             <h3 className="heart-name">Julija Krajceva</h3>
             <p className="heart-role">Co-Founder & Creative Director</p>
             <p className="heart-bio">
-              Julija brings artistry and design mastery, ensuring VERA feels
-              as stunning as it is intelligent. She shapes the experience where
-              science meets human beauty.
+              Julija brings artistry and design mastery, ensuring VERA feels as stunning as it is
+              intelligent. She shapes the experience where science meets human beauty.
             </p>
           </div>
         </div>

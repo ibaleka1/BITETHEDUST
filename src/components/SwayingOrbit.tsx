@@ -19,7 +19,9 @@ export default function SwayingOrbit() {
       utter.lang = "en-US";
       utter.rate = 1;
       const voices = window.speechSynthesis.getVoices();
-      const match = voices.find((v) => v.name.toLowerCase().includes((voiceName || "").toLowerCase()));
+      const match = voices.find((v) =>
+        v.name.toLowerCase().includes((voiceName || "").toLowerCase())
+      );
       if (match) utter.voice = match;
       window.speechSynthesis.speak(utter);
     },

@@ -15,12 +15,12 @@
 }
 
 .smx-card {
-  background: linear-gradient(135deg, rgba(10,14,39,0.95) 0%, rgba(21,24,50,0.9) 100%);
+  background: linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(21, 24, 50, 0.9) 100%);
   border: 1px solid var(--glass-border);
   border-radius: 30px;
   padding: 2rem;
   color: var(--text-primary);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
   max-width: 980px;
   margin: 2rem auto;
 }
@@ -57,10 +57,14 @@
   color: #fff;
   background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
   box-shadow: 0 12px 28px rgba(155, 89, 182, 0.35);
-  transition: transform 0.15s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
   font-weight: 700;
 }
-.smx-btn:hover, .smx-btn:focus-visible {
+.smx-btn:hover,
+.smx-btn:focus-visible {
   transform: translateY(-2px);
   box-shadow: 0 18px 44px rgba(155, 89, 182, 0.5);
   outline: none;
@@ -69,7 +73,7 @@
   background: linear-gradient(135deg, #ff7676, #ff9a9a);
 }
 .smx-btn.ghost {
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--glass-border);
   box-shadow: none;
   font-weight: 600;
@@ -82,7 +86,7 @@
 .smx-progress {
   position: relative;
   height: 8px;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--glass-border);
   border-radius: 999px;
   overflow: hidden;
@@ -100,27 +104,55 @@
   height: 280px;
   border-radius: 24px;
   border: 1px solid var(--glass-border);
-  background: radial-gradient(ellipse at 40% 40%, rgba(155, 89, 182, 0.18), rgba(100, 181, 246, 0.12) 40%, transparent 80%);
+  background: radial-gradient(
+    ellipse at 40% 40%,
+    rgba(155, 89, 182, 0.18),
+    rgba(100, 181, 246, 0.12) 40%,
+    transparent 80%
+  );
   overflow: hidden;
   display: grid;
   place-items: center;
   margin-bottom: 1.25rem;
 }
-.smx-visual.calm { animation: vis-breathe 8s ease-in-out infinite; }
-.smx-visual.pulse { animation: vis-pulse 2.2s ease-in-out infinite; }
-.smx-visual.sway  { animation: vis-sway 6s ease-in-out infinite; }
+.smx-visual.calm {
+  animation: vis-breathe 8s ease-in-out infinite;
+}
+.smx-visual.pulse {
+  animation: vis-pulse 2.2s ease-in-out infinite;
+}
+.smx-visual.sway {
+  animation: vis-sway 6s ease-in-out infinite;
+}
 
 @keyframes vis-breathe {
-  0%,100% { filter: brightness(1); }
-  50% { filter: brightness(1.12); }
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.12);
+  }
 }
 @keyframes vis-pulse {
-  0%,100% { filter: brightness(1); transform: scale(1); }
-  50% { filter: brightness(1.2); transform: scale(1.02); }
+  0%,
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(1.2);
+    transform: scale(1.02);
+  }
 }
 @keyframes vis-sway {
-  0%,100% { transform: translateX(0) rotate(-1deg); }
-  50% { transform: translateX(10px) rotate(1deg); }
+  0%,
+  100% {
+    transform: translateX(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateX(10px) rotate(1deg);
+  }
 }
 
 /* central orb */
@@ -129,7 +161,13 @@
   height: 180px;
   border-radius: 50%;
   background:
-    radial-gradient(circle at 38% 36%, rgba(248, 187, 208, 0.5), rgba(155, 89, 182, 0.5) 35%, rgba(100, 181, 246, 0.45) 70%, transparent 90%),
+    radial-gradient(
+      circle at 38% 36%,
+      rgba(248, 187, 208, 0.5),
+      rgba(155, 89, 182, 0.5) 35%,
+      rgba(100, 181, 246, 0.45) 70%,
+      transparent 90%
+    ),
     radial-gradient(circle at 60% 65%, rgba(100, 181, 246, 0.35), transparent 70%);
   box-shadow:
     0 0 180px rgba(155, 89, 182, 0.45),
@@ -141,16 +179,31 @@
   position: absolute;
   inset: -14px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(100,181,246,0.18), rgba(177,156,217,0.14) 50%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(100, 181, 246, 0.18),
+    rgba(177, 156, 217, 0.14) 50%,
+    transparent 70%
+  );
   filter: blur(10px);
 }
 
 /* intensity scaling */
-.smx-orb.i-1 { transform: scale(0.92); }
-.smx-orb.i-2 { transform: scale(0.97); }
-.smx-orb.i-3 { transform: scale(1); }
-.smx-orb.i-4 { transform: scale(1.06); }
-.smx-orb.i-5 { transform: scale(1.12); }
+.smx-orb.i-1 {
+  transform: scale(0.92);
+}
+.smx-orb.i-2 {
+  transform: scale(0.97);
+}
+.smx-orb.i-3 {
+  transform: scale(1);
+}
+.smx-orb.i-4 {
+  transform: scale(1.06);
+}
+.smx-orb.i-5 {
+  transform: scale(1.12);
+}
 
 /* soft waves */
 .smx-waves {
@@ -165,7 +218,7 @@
   top: 50%;
   width: 60px;
   height: 60px;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(1);
   opacity: 0;
@@ -173,9 +226,17 @@
   animation-delay: calc(var(--i) * 0.6s);
 }
 @keyframes wave {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.2; }
-  70% { opacity: 0.05; }
-  100% { transform: translate(-50%, -50%) scale(3.2); opacity: 0; }
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.2;
+  }
+  70% {
+    opacity: 0.05;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3.2);
+    opacity: 0;
+  }
 }
 
 /* step content */
@@ -197,7 +258,9 @@
   margin-top: 0.6rem;
   color: var(--text-soft);
 }
-.smx-timer .muted { color: var(--text-muted); }
+.smx-timer .muted {
+  color: var(--text-muted);
+}
 
 .smx-controls {
   margin-top: 1rem;
@@ -217,7 +280,7 @@
   padding: 0.5rem 0.7rem;
   border-radius: 999px;
   border: 1px solid var(--glass-border);
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
 .smx-controls-right {
   display: flex;
@@ -231,7 +294,7 @@
   align-items: center;
   color: var(--text-soft);
   border: 1px solid var(--glass-border);
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   padding: 0.4rem 0.6rem;
   border-radius: 12px;
 }
@@ -243,7 +306,7 @@
   min-width: 120px;
   border-radius: 10px;
   border: 1px solid var(--glass-border);
-  background: rgba(255,255,255,0.07);
+  background: rgba(255, 255, 255, 0.07);
   color: #fff;
   padding: 0 8px;
   outline: none;
@@ -259,7 +322,15 @@
 
 /* responsive */
 @media (max-width: 720px) {
-  .smx-head { flex-direction: column; align-items: stretch; }
-  .smx-visual { height: 240px; }
-  .smx-orb { width: 150px; height: 150px; }
+  .smx-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .smx-visual {
+    height: 240px;
+  }
+  .smx-orb {
+    width: 150px;
+    height: 150px;
+  }
 }

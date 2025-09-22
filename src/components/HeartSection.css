@@ -1,10 +1,6 @@
 .heart-section {
   padding: 6rem 2rem;
-  background: linear-gradient(
-    180deg,
-    rgba(155, 89, 182, 0.05) 0%,
-    rgba(10, 14, 39, 0.9) 100%
-  );
+  background: linear-gradient(180deg, rgba(155, 89, 182, 0.05) 0%, rgba(10, 14, 39, 0.9) 100%);
   text-align: center;
   position: relative;
   z-index: 1;
@@ -40,7 +36,9 @@
   max-width: 340px;
   text-align: center;
   backdrop-filter: blur(20px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 .heart-card:hover,
 .heart-card:focus-within {
@@ -78,6 +76,10 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .heart-title { font-size: 2.3rem; }
-  .heart-subtitle { font-size: 1.1rem; }
+  .heart-title {
+    font-size: 2.3rem;
+  }
+  .heart-subtitle {
+    font-size: 1.1rem;
+  }
 }

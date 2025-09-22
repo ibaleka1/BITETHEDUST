@@ -9,10 +9,14 @@
 }
 
 @media (max-width: 1080px) {
-  .grounding-grid { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+  .grounding-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
 }
 @media (max-width: 640px) {
-  .grounding-grid { grid-template-columns: 1fr; }
+  .grounding-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .g-card {
@@ -24,11 +28,21 @@
   box-shadow: 0 0 16px rgba(255, 183, 213, 0.15);
 }
 
-.g-card.see   { box-shadow: 0 0 16px rgba(100,181,246,0.25); }
-.g-card.feel  { box-shadow: 0 0 16px rgba(255,183,213,0.25); }
-.g-card.hear  { box-shadow: 0 0 16px rgba(177,156,217,0.25); }
-.g-card.smell { box-shadow: 0 0 16px rgba(100,181,246,0.18); }
-.g-card.taste { box-shadow: 0 0 16px rgba(155,89,182,0.25); }
+.g-card.see {
+  box-shadow: 0 0 16px rgba(100, 181, 246, 0.25);
+}
+.g-card.feel {
+  box-shadow: 0 0 16px rgba(255, 183, 213, 0.25);
+}
+.g-card.hear {
+  box-shadow: 0 0 16px rgba(177, 156, 217, 0.25);
+}
+.g-card.smell {
+  box-shadow: 0 0 16px rgba(100, 181, 246, 0.18);
+}
+.g-card.taste {
+  box-shadow: 0 0 16px rgba(155, 89, 182, 0.25);
+}
 
 .g-title {
   margin: 0 0 0.5rem 0;
@@ -43,7 +57,9 @@
   gap: 0.35rem;
 }
 
-.g-row { display: flex; }
+.g-row {
+  display: flex;
+}
 
 .g-input {
   width: 100%;
@@ -72,7 +88,8 @@
   border-radius: 10px;
   cursor: pointer;
 }
-.g-btn:hover, .g-btn:focus-visible {
+.g-btn:hover,
+.g-btn:focus-visible {
   box-shadow: 0 0 12px var(--vera-glow-pink);
   outline: none;
 }

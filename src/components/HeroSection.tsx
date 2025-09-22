@@ -12,7 +12,9 @@ export default function HeroSection({ onOpenAuthModal }: HeroSectionProps) {
       {/* Presence / Orb */}
       <div className="vera-presence-container" aria-hidden="true">
         <VERAOrb />
-        <div className="vera-name-glow" aria-hidden="true">VERA</div>
+        <div className="vera-name-glow" aria-hidden="true">
+          VERA
+        </div>
       </div>
 
       {/* Copy */}
@@ -54,4 +56,3 @@ export default function HeroSection({ onOpenAuthModal }: HeroSectionProps) {
     </header>
   );
 }
-

@@ -7,6 +7,7 @@ Educational wellness chat app with voice in/out, breathing/swaying orbs, groundi
 ## Quick Start
 
 1. **Clone & install:**
+
    ```sh
    pnpm i
    # or
@@ -18,6 +19,7 @@ Educational wellness chat app with voice in/out, breathing/swaying orbs, groundi
 2. **Set required env vars (see below).**
 
 3. **Run locally:**
+
    ```sh
    pnpm dev
    # or
@@ -27,6 +29,7 @@ Educational wellness chat app with voice in/out, breathing/swaying orbs, groundi
    ```
 
 4. **Production build:**
+
    ```sh
    pnpm build && pnpm start
    # or
@@ -43,13 +46,13 @@ Educational wellness chat app with voice in/out, breathing/swaying orbs, groundi
 
 ## Required Environment Variables
 
-| Name                     | Description                                           | Example                 |
-|--------------------------|-------------------------------------------------------|-------------------------|
-| NEXT_PUBLIC_USE_SERVER_TTS | Use ElevenLabs TTS via API (`true` or `false`)      | true                    |
-| ELEVENLABS_API_KEY         | ElevenLabs API key (if using server TTS)            | sk-...                  |
-| SLACK_WEBHOOK_URL          | Slack webhook for feedback (optional)               | https://hooks.slack...  |
-| STRIPE_SECRET_KEY          | Stripe secret key (for checkout)                    | sk_live_...             |
-| NEXT_PUBLIC_PRICE_ID       | Stripe price ID for VERA Monthly plan               | price_123...            |
+| Name                       | Description                                    | Example                |
+| -------------------------- | ---------------------------------------------- | ---------------------- |
+| NEXT_PUBLIC_USE_SERVER_TTS | Use ElevenLabs TTS via API (`true` or `false`) | true                   |
+| ELEVENLABS_API_KEY         | ElevenLabs API key (if using server TTS)       | sk-...                 |
+| SLACK_WEBHOOK_URL          | Slack webhook for feedback (optional)          | https://hooks.slack... |
+| STRIPE_SECRET_KEY          | Stripe secret key (for checkout)               | sk*live*...            |
+| NEXT_PUBLIC_PRICE_ID       | Stripe price ID for VERA Monthly plan          | price_123...           |
 
 ---
 

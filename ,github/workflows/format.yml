@@ -3,7 +3,7 @@ name: Format with Prettier
 on:
   pull_request:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   prettier:
@@ -15,4 +15,3 @@ jobs:
           node-version: 18
       - run: npm install
       - run: npm run format --if-present
-

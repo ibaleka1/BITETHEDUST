@@ -195,11 +195,7 @@ export default function VERANav({
       </nav>
 
       {/* Auth Modal (wired, no external props required beyond open/close) */}
-      <VERAAuthModal
-        isOpen={authOpen}
-        onClose={() => setAuthOpen(false)}
-        defaultTab="signin"
-      />
+      <VERAAuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} defaultTab="signin" />
     </>
   );
 }

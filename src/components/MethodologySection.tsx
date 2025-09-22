@@ -21,7 +21,9 @@ export default function MethodologySection() {
   ];
   return (
     <section id="methodology" className="methodology-section" aria-labelledby="methodology-heading">
-      <h2 id="methodology-heading" className="m-title">How VERA Works With You</h2>
+      <h2 id="methodology-heading" className="m-title">
+        How VERA Works With You
+      </h2>
       <div className="m-list">
         {items.map((it, i) => (
           <div className="m-row" key={i}>
@@ -33,4 +35,3 @@ export default function MethodologySection() {
     </section>
   );
 }
-

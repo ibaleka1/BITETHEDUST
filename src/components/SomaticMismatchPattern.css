@@ -49,7 +49,8 @@
   border-radius: 10px;
   cursor: pointer;
 }
-.smp-btn:hover, .smp-btn:focus-visible {
+.smp-btn:hover,
+.smp-btn:focus-visible {
   box-shadow: 0 0 12px var(--vera-glow-pink);
   outline: none;
 }

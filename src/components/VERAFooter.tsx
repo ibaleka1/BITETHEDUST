@@ -14,16 +14,23 @@ export default function VERAFooter() {
         </div>
 
         {/* Navigation */}
-        <nav
-          className="vera-footer-nav"
-          aria-label="Footer navigation"
-        >
+        <nav className="vera-footer-nav" aria-label="Footer navigation">
           <ul>
-            <li><a href="#experience">Exercises</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#methodology">Methodology</a></li>
-            <li><a href="#heart">About</a></li>
+            <li>
+              <a href="#experience">Exercises</a>
+            </li>
+            <li>
+              <a href="#features">Features</a>
+            </li>
+            <li>
+              <a href="#pricing">Pricing</a>
+            </li>
+            <li>
+              <a href="#methodology">Methodology</a>
+            </li>
+            <li>
+              <a href="#heart">About</a>
+            </li>
           </ul>
         </nav>
 
@@ -58,12 +65,8 @@ export default function VERAFooter() {
 
       {/* Legal & smallprint */}
       <div className="vera-footer-bottom">
-        <p>
-          © {new Date().getFullYear()} Regulate to Elevate — All rights reserved.
-        </p>
-        <p>
-          Built with love, science, and nervous system integrity.
-        </p>
+        <p>© {new Date().getFullYear()} Regulate to Elevate — All rights reserved.</p>
+        <p>Built with love, science, and nervous system integrity.</p>
       </div>
     </footer>
   );

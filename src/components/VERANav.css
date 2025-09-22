@@ -35,14 +35,13 @@
   right: 0;
   z-index: 1000;
   padding: 1.25rem 1.5rem;
-  background: linear-gradient(
-    180deg,
-    rgba(10, 14, 39, 0.98) 0%,
-    rgba(10, 14, 39, 0.9) 100%
-  );
+  background: linear-gradient(180deg, rgba(10, 14, 39, 0.98) 0%, rgba(10, 14, 39, 0.9) 100%);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--glass-border);
-  transition: box-shadow 0.25s ease, background 0.25s ease, padding 0.25s ease;
+  transition:
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    padding 0.25s ease;
 }
 .vera-nav.scrolled {
   padding: 0.9rem 1.5rem;
@@ -88,7 +87,9 @@
   color: var(--text-soft);
   text-decoration: none;
   padding: 0.5rem 0;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 .vera-link:hover,
 .vera-link:focus-visible {
@@ -109,7 +110,9 @@
   background: linear-gradient(135deg, var(--vera-lavender), var(--vera-neural-blue));
   cursor: pointer;
   font-weight: 600;
-  transition: transform 0.2s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
   box-shadow: 0 10px 32px rgba(155, 89, 182, 0.35);
 }
 .vera-cta-btn:hover,
@@ -130,7 +133,9 @@
   border: 1px solid var(--glass-border);
   background: rgba(255, 255, 255, 0.04);
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
 }
 .vera-burger:hover,
 .vera-burger:focus-visible {
@@ -144,7 +149,9 @@
   height: 2px;
   background: #fff;
   margin: 3px 0;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 .vera-burger.open span:nth-child(1) {
   transform: translateY(5px) rotate(45deg);
@@ -161,17 +168,15 @@
   position: fixed;
   inset: 0;
   top: calc(var(--nav-offset, 48px) + 60px);
-  background: linear-gradient(
-    180deg,
-    rgba(10, 14, 39, 0.98) 0%,
-    rgba(21, 24, 50, 0.97) 100%
-  );
+  background: linear-gradient(180deg, rgba(10, 14, 39, 0.98) 0%, rgba(21, 24, 50, 0.97) 100%);
   border-top: 1px solid var(--glass-border);
   backdrop-filter: blur(20px);
   transform: translateY(-8px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.18s ease, transform 0.18s ease;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
   z-index: 999;
   padding: 1rem 1.25rem 2rem;
 }
@@ -195,7 +200,9 @@
   text-decoration: none;
   color: var(--text-primary);
   border: 1px solid transparent;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 .vera-drawer-link:hover,
 .vera-drawer-link:focus-visible {
@@ -215,7 +222,9 @@
   font-weight: 700;
   box-shadow: 0 12px 32px rgba(155, 89, 182, 0.35);
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
 }
 .vera-drawer-cta:hover,
 .vera-drawer-cta:focus-visible {

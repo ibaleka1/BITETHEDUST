@@ -5,11 +5,11 @@ type SenseKey = "see" | "feel" | "hear" | "smell" | "taste";
 type GroundingState = Record<SenseKey, string[]>;
 
 const DEFAULT: GroundingState = {
-  see: ["", "", "", "", ""],     // 5
-  feel: ["", "", "", ""],        // 4
-  hear: ["", "", ""],            // 3
-  smell: ["", ""],               // 2
-  taste: [""],                   // 1
+  see: ["", "", "", "", ""], // 5
+  feel: ["", "", "", ""], // 4
+  hear: ["", "", ""], // 3
+  smell: ["", ""], // 2
+  taste: [""], // 1
 };
 
 const STORAGE_KEY = "vera_grounding_54321_v1";
@@ -45,25 +45,45 @@ export default function GroundingExercise() {
       <div className="grounding-grid">
         <Card title="5 things you can see" accent="see">
           {data.see.map((v, i) => (
-            <InputRow key={i} value={v} onChange={(t) => update("see", i, t)} placeholder={`#${i + 1}`} />
+            <InputRow
+              key={i}
+              value={v}
+              onChange={(t) => update("see", i, t)}
+              placeholder={`#${i + 1}`}
+            />
           ))}
         </Card>
 
         <Card title="4 things you can feel" accent="feel">
           {data.feel.map((v, i) => (
-            <InputRow key={i} value={v} onChange={(t) => update("feel", i, t)} placeholder={`#${i + 1}`} />
+            <InputRow
+              key={i}
+              value={v}
+              onChange={(t) => update("feel", i, t)}
+              placeholder={`#${i + 1}`}
+            />
           ))}
         </Card>
 
         <Card title="3 things you can hear" accent="hear">
           {data.hear.map((v, i) => (
-            <InputRow key={i} value={v} onChange={(t) => update("hear", i, t)} placeholder={`#${i + 1}`} />
+            <InputRow
+              key={i}
+              value={v}
+              onChange={(t) => update("hear", i, t)}
+              placeholder={`#${i + 1}`}
+            />
           ))}
         </Card>
 
         <Card title="2 things you can smell" accent="smell">
           {data.smell.map((v, i) => (
-            <InputRow key={i} value={v} onChange={(t) => update("smell", i, t)} placeholder={`#${i + 1}`} />
+            <InputRow
+              key={i}
+              value={v}
+              onChange={(t) => update("smell", i, t)}
+              placeholder={`#${i + 1}`}
+            />
           ))}
         </Card>
 
@@ -75,7 +95,9 @@ export default function GroundingExercise() {
       </div>
 
       <div className="grounding-actions">
-        <button className="g-btn" onClick={reset}>Reset</button>
+        <button className="g-btn" onClick={reset}>
+          Reset
+        </button>
       </div>
     </div>
   );

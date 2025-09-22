@@ -9,7 +9,9 @@ try {
 } catch {
   // noop – context is optional
 }
-const VeraContext = VeraCtx?.VeraContext ?? React.createContext({ speakerOn: true, setSpeakerOn: (_: boolean) => {} });
+const VeraContext =
+  VeraCtx?.VeraContext ??
+  React.createContext({ speakerOn: true, setSpeakerOn: (_: boolean) => {} });
 
 type ChatMessage = {
   role: "user" | "assistant" | "system";
@@ -32,7 +34,9 @@ const LANGUAGES = [
 ];
 
 // ---------- simple built-in STT (graceful fallback) ----------
-function useBuiltInSTT(lang: string): [STTState, { start: () => void; stop: () => void; reset: () => void }] {
+function useBuiltInSTT(
+  lang: string
+): [STTState, { start: () => void; stop: () => void; reset: () => void }] {
   const recRef = useRef<SpeechRecognition | null>(null);
   const [state, setState] = useState<STTState>({
     supported: false,
@@ -131,7 +135,9 @@ export default function VERAOrb({
   const [messages, setMessages] = useState<ChatMessage[]>([
     { role: "assistant", text: welcome, ts: Date.now() },
   ]);
-  const [presenceState, setPresenceState] = useState<"idle" | "listening" | "thinking" | "speaking">("idle");
+  const [presenceState, setPresenceState] = useState<
+    "idle" | "listening" | "thinking" | "speaking"
+  >("idle");
   const endRef = useRef<HTMLDivElement | null>(null);
   const chimeRef = useRef<HTMLAudioElement | null>(null);
 
@@ -320,8 +326,18 @@ export default function VERAOrb({
               onClick={micToggle}
               disabled={!stt.supported}
               aria-pressed={stt.listening}
-              aria-label={stt.supported ? (stt.listening ? "Stop listening" : "Start listening") : "Microphone not supported"}
-              title={stt.supported ? "Hold a phrase and release" : "Speech recognition not supported on this browser"}
+              aria-label={
+                stt.supported
+                  ? stt.listening
+                    ? "Stop listening"
+                    : "Start listening"
+                  : "Microphone not supported"
+              }
+              title={
+                stt.supported
+                  ? "Hold a phrase and release"
+                  : "Speech recognition not supported on this browser"
+              }
             >
               🎤
             </button>
@@ -396,7 +412,11 @@ export default function VERAOrb({
       </div>
 
       {/* non-blocking error for STT */}
-      {stt.error && <p className="stt-error" role="status">Mic error: {String(stt.error)}</p>}
+      {stt.error && (
+        <p className="stt-error" role="status">
+          Mic error: {String(stt.error)}
+        </p>
+      )}
     </section>
   );
 }

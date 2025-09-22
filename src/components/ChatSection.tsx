@@ -51,8 +51,14 @@ export default function ChatSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const { listening, supported: sttSupported, start, stop, transcript, error: sttError } =
-    useSpeechRecognition();
+  const {
+    listening,
+    supported: sttSupported,
+    start,
+    stop,
+    transcript,
+    error: sttError,
+  } = useSpeechRecognition();
 
   // auto-scroll on new messages
   useEffect(() => {
@@ -220,9 +226,13 @@ export default function ChatSection() {
   return (
     <section id="chat" className="chat-section" aria-labelledby="chat-heading">
       <header className="chat-header">
-        <h2 id="chat-heading" className="chat-title">Chat with VERA</h2>
+        <h2 id="chat-heading" className="chat-title">
+          Chat with VERA
+        </h2>
         <div className="chat-controls" role="group" aria-label="Chat controls">
-          <button className="chat-btn" onClick={clearChat}>Clear</button>
+          <button className="chat-btn" onClick={clearChat}>
+            Clear
+          </button>
           <button
             className="chat-btn"
             onClick={() => setSpeakerOn?.(!speakerOn)}
@@ -287,7 +297,9 @@ function MessageBubble({ role, content, ts }: { role: ChatRole; content: string;
   return (
     <div className={`chat-msg ${role}`}>
       <div className="chat-msg-meta">
-        <span className="chat-msg-role">{role === "assistant" ? "VERA" : role === "user" ? "You" : "System"}</span>
+        <span className="chat-msg-role">
+          {role === "assistant" ? "VERA" : role === "user" ? "You" : "System"}
+        </span>
         <time className="chat-msg-time">{time}</time>
       </div>
       <p className="chat-msg-text">{content}</p>

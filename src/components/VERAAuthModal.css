@@ -11,8 +11,12 @@
   animation: vera-auth-fade 180ms ease-out;
 }
 @keyframes vera-auth-fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Panel */
@@ -22,18 +26,20 @@
   max-width: 520px;
   border-radius: 30px;
   padding: 2.5rem;
-  background: linear-gradient(
-    135deg,
-    rgba(10, 14, 39, 0.98) 0%,
-    rgba(21, 24, 50, 0.95) 100%
-  );
+  background: linear-gradient(135deg, rgba(10, 14, 39, 0.98) 0%, rgba(21, 24, 50, 0.95) 100%);
   border: 2px solid var(--vera-lavender);
   box-shadow: 0 24px 60px rgba(155, 89, 182, 0.5);
   animation: vera-auth-pop 200ms ease-out;
 }
 @keyframes vera-auth-pop {
-  from { transform: translateY(6px) scale(0.985); opacity: 0; }
-  to { transform: translateY(0) scale(1); opacity: 1; }
+  from {
+    transform: translateY(6px) scale(0.985);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 }
 
 /* Close */
@@ -45,18 +51,17 @@
   height: 40px;
   border-radius: 50%;
   border: 1px solid var(--glass-border);
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(177, 156, 217, 0.25),
-    rgba(10, 14, 39, 0.4)
-  );
+  background: radial-gradient(circle at 50% 50%, rgba(177, 156, 217, 0.25), rgba(10, 14, 39, 0.4));
   color: var(--text-soft);
   cursor: pointer;
   font-size: 22px;
   line-height: 1;
   display: grid;
   place-items: center;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, color 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    color 0.18s ease;
 }
 .vera-auth-close:hover,
 .vera-auth-close:focus-visible {
@@ -94,7 +99,11 @@
   background: rgba(255, 255, 255, 0.03);
   color: var(--text-soft);
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
 }
 .vera-auth-tab:hover,
 .vera-auth-tab:focus-visible {
@@ -120,7 +129,9 @@
 }
 
 /* Form */
-.vera-auth-form { margin-top: 0.25rem; }
+.vera-auth-form {
+  margin-top: 0.25rem;
+}
 
 .vera-auth-label {
   display: block;
@@ -138,16 +149,23 @@
   background: rgba(255, 255, 255, 0.06);
   color: #fff;
   font-size: 1rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
-.vera-auth-input::placeholder { color: var(--text-muted); }
+.vera-auth-input::placeholder {
+  color: var(--text-muted);
+}
 .vera-auth-input:focus {
   outline: none;
   border-color: rgba(155, 89, 182, 0.65);
   box-shadow: 0 0 0 3px rgba(155, 89, 182, 0.25);
   background: rgba(255, 255, 255, 0.08);
 }
-.vera-auth-input.select { border-radius: 20px; }
+.vera-auth-input.select {
+  border-radius: 20px;
+}
 .vera-auth-input.select option {
   background: var(--vera-deep-space);
   color: #fff;
@@ -163,7 +181,9 @@
   color: #fff;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
   box-shadow: 0 12px 32px rgba(155, 89, 182, 0.35);
 }
 .vera-auth-submit:hover,
@@ -196,6 +216,7 @@
 
 /* Responsive */
 @media (max-width: 560px) {
-  .vera-auth-panel { padding: 2rem 1.25rem 1.75rem; }
+  .vera-auth-panel {
+    padding: 2rem 1.25rem 1.75rem;
+  }
 }
-

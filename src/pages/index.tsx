@@ -30,16 +30,36 @@ export default function Home() {
       <VERANav />
       <main>
         <HeroSection />
-        <section id="chat"><VERACompanion /></section>
-        <section id="grounding"><GroundingExercise /></section>
-        <section id="breathing"><BreathingOrb /></section>
-        <section id="sway"><SwayingOrbit /></section>
-        <section id="mismatch"><SomaticMismatchPattern /></section>
-        <section id="features"><FeaturesSection /></section>
-        <section id="methodology"><MethodologySection /></section>
-        <section id="exercises"><ExercisesSection /></section>
-        <section id="pricing"><PricingSection /></section>
-        <section id="heart"><HeartSection /></section>
+        <section id="chat">
+          <VERACompanion />
+        </section>
+        <section id="grounding">
+          <GroundingExercise />
+        </section>
+        <section id="breathing">
+          <BreathingOrb />
+        </section>
+        <section id="sway">
+          <SwayingOrbit />
+        </section>
+        <section id="mismatch">
+          <SomaticMismatchPattern />
+        </section>
+        <section id="features">
+          <FeaturesSection />
+        </section>
+        <section id="methodology">
+          <MethodologySection />
+        </section>
+        <section id="exercises">
+          <ExercisesSection />
+        </section>
+        <section id="pricing">
+          <PricingSection />
+        </section>
+        <section id="heart">
+          <HeartSection />
+        </section>
       </main>
       <LivingUniverse />
       <VERAFooter />

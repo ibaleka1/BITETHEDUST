@@ -5,8 +5,7 @@ import { useRef, useState, useContext, useEffect } from "react";
 import { VeraContext } from "../pages/_app";
 import "./BreathingOrb.css";
 
-const coachingLine =
-  "Let's breathe together. Inhale slowly for four, hold, then exhale gently.";
+const coachingLine = "Let's breathe together. Inhale slowly for four, hold, then exhale gently.";
 
 export default function BreathingOrb() {
   const [playing, setPlaying] = useState(false);
@@ -47,20 +46,14 @@ export default function BreathingOrb() {
   }, []);
 
   return (
-    <section
-      id="breathing"
-      className="breathing-orb-section"
-      aria-labelledby="breathing-heading"
-    >
+    <section id="breathing" className="breathing-orb-section" aria-labelledby="breathing-heading">
       <h2 id="breathing-heading" className="breathing-orb-title">
         Breathing Exercise
       </h2>
 
       <div
         ref={orbRef}
-        className={`breathing-orb${playing ? " active" : ""}${
-          !playing ? " paused" : ""
-        }`}
+        className={`breathing-orb${playing ? " active" : ""}${!playing ? " paused" : ""}`}
         aria-label="Breathing Orb"
         tabIndex={0}
         role="img"
@@ -90,8 +83,7 @@ export default function BreathingOrb() {
       </div>
 
       <p className="breathing-orb-desc">
-        Inhale for four… hold for four… exhale for four. Let your breath guide
-        you home.
+        Inhale for four… hold for four… exhale for four. Let your breath guide you home.
       </p>
     </section>
   );

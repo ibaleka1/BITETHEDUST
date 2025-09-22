@@ -25,7 +25,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <VeraContext.Provider value={{ speakerOn, setSpeakerOn, theme, setTheme }}>
       <Head>
         <title>VERA – Your Companion</title>
-        <meta name="description" content="VERA – Your AI nervous system companion for somatic wellness, chat, and voice." />
+        <meta
+          name="description"
+          content="VERA – Your AI nervous system companion for somatic wellness, chat, and voice."
+        />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />

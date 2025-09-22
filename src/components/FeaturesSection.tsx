@@ -22,8 +22,12 @@ export default function FeaturesSection() {
 
   return (
     <section id="features" className="features-section" aria-labelledby="features-heading">
-      <h2 id="features-heading" className="features-title">What VERA Does For You</h2>
-      <p className="features-subtitle">Simple, powerful tools — wrapped in a companion that actually feels present.</p>
+      <h2 id="features-heading" className="features-title">
+        What VERA Does For You
+      </h2>
+      <p className="features-subtitle">
+        Simple, powerful tools — wrapped in a companion that actually feels present.
+      </p>
 
       <div className="features-grid" role="list">
         {features.map((f, i) => (
@@ -37,4 +41,3 @@ export default function FeaturesSection() {
     </section>
   );
 }
-

@@ -196,4 +196,3 @@ export default function VERACompanion() {
     </section>
   );
 }
-

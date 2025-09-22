@@ -1,24 +1,31 @@
 :root {
-  --vera-deep-space: #0A0E27;
+  --vera-deep-space: #0a0e27;
   --vera-midnight: #151832;
-  --vera-purple: #9B59B6;
-  --vera-lavender: #B19CD9;
-  --vera-neural-blue: #64B5F6;
-  --vera-glow-pink: #F8BBD0;
-  --vera-deep-violet: #4A148C;
-  --vera-soft-gold: #FFD700;
-  --vera-emerald: #10B981;
-  --glass-white: rgba(255,255,255,0.03);
-  --glass-border: rgba(255,255,255,0.08);
-  --text-primary: rgba(255,255,255,0.95);
-  --text-soft: rgba(255,255,255,0.75);
-  --text-muted: rgba(255,255,255,0.45);
+  --vera-purple: #9b59b6;
+  --vera-lavender: #b19cd9;
+  --vera-neural-blue: #64b5f6;
+  --vera-glow-pink: #f8bbd0;
+  --vera-deep-violet: #4a148c;
+  --vera-soft-gold: #ffd700;
+  --vera-emerald: #10b981;
+  --glass-white: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-soft: rgba(255, 255, 255, 0.75);
+  --text-muted: rgba(255, 255, 255, 0.45);
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 body {
-  font-family: 'Poppins', Arial, sans-serif;
-  background: radial-gradient(ellipse at top, var(--vera-midnight) 0%, var(--vera-deep-space) 40%, #000 100%);
+  font-family: "Poppins", Arial, sans-serif;
+  background: radial-gradient(
+    ellipse at top,
+    var(--vera-midnight) 0%,
+    var(--vera-deep-space) 40%,
+    #000 100%
+  );
   color: var(--text-primary);
   min-height: 100vh;
   margin: 0;
@@ -31,7 +38,8 @@ a {
   text-decoration: underline;
   transition: color 0.15s;
 }
-a:hover, a:focus {
+a:hover,
+a:focus {
   color: var(--vera-soft-gold);
 }
 
@@ -46,7 +54,9 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *:before, *:after {
+  *,
+  *:before,
+  *:after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;

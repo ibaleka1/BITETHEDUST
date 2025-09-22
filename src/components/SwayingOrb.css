@@ -2,17 +2,22 @@
   padding: 0.25rem 0 0.5rem;
 }
 
-.sway-open-btn, .sway-close-btn {
+.sway-open-btn,
+.sway-close-btn {
   background: linear-gradient(135deg, var(--vera-purple), var(--vera-neural-blue));
   border: none;
   color: #fff;
   padding: 0.55rem 1.1rem;
   border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
 }
-.sway-open-btn:hover, .sway-open-btn:focus-visible,
-.sway-close-btn:hover, .sway-close-btn:focus-visible {
+.sway-open-btn:hover,
+.sway-open-btn:focus-visible,
+.sway-close-btn:hover,
+.sway-close-btn:focus-visible {
   transform: translateY(-1px);
   box-shadow: 0 0 14px var(--vera-glow-pink);
   outline: none;
@@ -37,7 +42,11 @@
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid rgba(155, 89, 182, 0.35);
-  background: radial-gradient(1200px 800px at 50% 50%, rgba(100,181,246,0.18), rgba(10,14,39,0.95));
+  background: radial-gradient(
+    1200px 800px at 50% 50%,
+    rgba(100, 181, 246, 0.18),
+    rgba(10, 14, 39, 0.95)
+  );
   box-shadow: 0 0 40px rgba(255, 183, 213, 0.2);
 }
 
@@ -50,9 +59,15 @@
 }
 
 @keyframes sway {
-  0%   { transform: rotate(-3deg) translateX(-2%); }
-  50%  { transform: rotate(3deg)  translateX(2%); }
-  100% { transform: rotate(-3deg) translateX(-2%); }
+  0% {
+    transform: rotate(-3deg) translateX(-2%);
+  }
+  50% {
+    transform: rotate(3deg) translateX(2%);
+  }
+  100% {
+    transform: rotate(-3deg) translateX(-2%);
+  }
 }
 
 /* floating particles */
@@ -67,17 +82,39 @@
   animation: float 12s linear infinite;
 }
 @keyframes float {
-  from { transform: translateY(100vh) translateX(0); }
-  to   { transform: translateY(-20vh) translateX(10vw); }
+  from {
+    transform: translateY(100vh) translateX(0);
+  }
+  to {
+    transform: translateY(-20vh) translateX(10vw);
+  }
 }
 
 /* scatter positions + speeds */
-.sway-particle.p1 { left: 10%; animation-duration: 10s; }
-.sway-particle.p2 { left: 22%; animation-duration: 12s; }
-.sway-particle.p3 { left: 35%; animation-duration: 14s; }
-.sway-particle.p4 { left: 50%; animation-duration: 11s; }
-.sway-particle.p5 { left: 66%; animation-duration: 13s; }
-.sway-particle.p6 { left: 82%; animation-duration: 15s; }
+.sway-particle.p1 {
+  left: 10%;
+  animation-duration: 10s;
+}
+.sway-particle.p2 {
+  left: 22%;
+  animation-duration: 12s;
+}
+.sway-particle.p3 {
+  left: 35%;
+  animation-duration: 14s;
+}
+.sway-particle.p4 {
+  left: 50%;
+  animation-duration: 11s;
+}
+.sway-particle.p5 {
+  left: 66%;
+  animation-duration: 13s;
+}
+.sway-particle.p6 {
+  left: 82%;
+  animation-duration: 15s;
+}
 
 .sway-controls {
   position: absolute;

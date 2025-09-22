@@ -1,9 +1,5 @@
 .vera-footer {
-  background: linear-gradient(
-    180deg,
-    rgba(10, 14, 39, 0.95) 0%,
-    rgba(21, 24, 50, 0.98) 100%
-  );
+  background: linear-gradient(180deg, rgba(10, 14, 39, 0.95) 0%, rgba(21, 24, 50, 0.98) 100%);
   color: var(--text-soft);
   padding: 3rem 1.5rem 2rem;
   margin-top: 4rem;
@@ -65,7 +61,9 @@
 .vera-footer-social a {
   color: var(--text-soft);
   font-size: 1.4rem;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 .vera-footer-social a:hover,
 .vera-footer-social a:focus-visible {

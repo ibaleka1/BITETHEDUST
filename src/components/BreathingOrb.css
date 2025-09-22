@@ -23,8 +23,10 @@
     transparent 100%
   );
   box-shadow: 0 0 60px 20px var(--vera-lavender);
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
-  animation: breathing-444 12s cubic-bezier(.4,0,.2,1) infinite;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+  animation: breathing-444 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 /* Boosted state (e.g. when user activates orb) */
@@ -39,10 +41,18 @@
 
 /* 4-4-4 cycle: inhale 0–4s, hold 4–8s, exhale 8–12s */
 @keyframes breathing-444 {
-  0%   { transform: scale(1); }
-  33%  { transform: scale(1.2); } /* end inhale */
-  66%  { transform: scale(1.2); } /* end hold */
-  100% { transform: scale(1); }   /* end exhale */
+  0% {
+    transform: scale(1);
+  }
+  33% {
+    transform: scale(1.2);
+  } /* end inhale */
+  66% {
+    transform: scale(1.2);
+  } /* end hold */
+  100% {
+    transform: scale(1);
+  } /* end exhale */
 }
 
 /* Control button */
@@ -55,7 +65,9 @@
   padding: 0.7em 2.2em;
   cursor: pointer;
   margin-bottom: 1em;
-  transition: box-shadow 0.2s ease, transform 0.1s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.1s ease;
 }
 
 .breathing-orb-btn:hover,

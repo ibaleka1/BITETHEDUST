@@ -4,8 +4,8 @@ import "./PricingSection.css";
 type PlanId = "explorer" | "regulator" | "integrator" | "enterprise";
 
 type PricingSectionProps = {
-  onSelectPlan?: (plan: PlanId) => void;        // optional: open your auth/checkout modal
-  ctaHrefEnterprise?: string;                   // optional: external link for enterprise
+  onSelectPlan?: (plan: PlanId) => void; // optional: open your auth/checkout modal
+  ctaHrefEnterprise?: string; // optional: external link for enterprise
 };
 
 export default function PricingSection({
@@ -15,7 +15,9 @@ export default function PricingSection({
   return (
     <section id="pricing" className="pricing-section" aria-labelledby="pricing-heading">
       <div className="pricing-header">
-        <h2 id="pricing-heading" className="pricing-title">Your Journey Home</h2>
+        <h2 id="pricing-heading" className="pricing-title">
+          Your Journey Home
+        </h2>
         <p className="pricing-subtitle">
           Choose the path that meets your nervous system where it is — then grow from there.
         </p>
@@ -45,8 +47,14 @@ export default function PricingSection({
         </article>
 
         {/* Regulator (Featured) */}
-        <article className="pricing-card featured" role="listitem" aria-label="Regulator plan, most popular">
-          <div className="plan-ribbon" aria-hidden="true">MOST POPULAR</div>
+        <article
+          className="pricing-card featured"
+          role="listitem"
+          aria-label="Regulator plan, most popular"
+        >
+          <div className="plan-ribbon" aria-hidden="true">
+            MOST POPULAR
+          </div>
           <h3 className="plan-name gold">REGULATOR</h3>
           <div className="plan-price">
             <span className="currency">$</span>39
@@ -123,9 +131,9 @@ export default function PricingSection({
       </div>
 
       <p className="pricing-footnote" aria-live="polite">
-        Test mode enabled • Use Stripe test card: <strong>4242 4242 4242 4242</strong> • Any future date • Any CVC
+        Test mode enabled • Use Stripe test card: <strong>4242 4242 4242 4242</strong> • Any future
+        date • Any CVC
       </p>
     </section>
   );
 }
-

@@ -11,7 +11,9 @@ type Phase = "inhale" | "hold" | "exhale";
 export default function ExercisesSection() {
   return (
     <section id="experience" className="exercises-section" aria-labelledby="exercises-heading">
-      <h2 id="exercises-heading" className="exercises-title">Regulation Exercises</h2>
+      <h2 id="exercises-heading" className="exercises-title">
+        Regulation Exercises
+      </h2>
 
       {/* Breathing with guided counts overlay */}
       <div className="exercise-card">
@@ -26,7 +28,8 @@ export default function ExercisesSection() {
         </div>
 
         <p className="exercise-note">
-          Tip: If you enabled speaker, VERA counts out loud. Otherwise, follow the on-screen numbers.
+          Tip: If you enabled speaker, VERA counts out loud. Otherwise, follow the on-screen
+          numbers.
         </p>
       </div>
 
@@ -52,7 +55,9 @@ export default function ExercisesSection() {
       <div className="exercise-card">
         <header className="exercise-header">
           <h3>Somatic Mismatch</h3>
-          <p className="exercise-sub">Notice where your body’s response doesn’t match the situation.</p>
+          <p className="exercise-sub">
+            Notice where your body’s response doesn’t match the situation.
+          </p>
         </header>
         <SomaticMismatchPattern />
       </div>
@@ -97,7 +102,9 @@ function GuidedBreathingOverlay() {
       utter.lang = "en-US";
       utter.rate = 1;
       const voices = window.speechSynthesis.getVoices();
-      const match = voices.find((v) => v.name.toLowerCase().includes((voiceName || "").toLowerCase()));
+      const match = voices.find((v) =>
+        v.name.toLowerCase().includes((voiceName || "").toLowerCase())
+      );
       if (match) utter.voice = match;
       window.speechSynthesis.speak(utter);
     },
@@ -173,16 +180,28 @@ function GuidedBreathingOverlay() {
       <div className="count-display">{displayCount}</div>
       <div className="overlay-controls" role="group" aria-label="Breathing controls">
         {!running ? (
-          <button type="button" className="overlay-btn" onClick={start} aria-label="Start guided breathing">
+          <button
+            type="button"
+            className="overlay-btn"
+            onClick={start}
+            aria-label="Start guided breathing"
+          >
             Start
           </button>
         ) : (
-          <button type="button" className="overlay-btn" onClick={stop} aria-label="Stop guided breathing">
+          <button
+            type="button"
+            className="overlay-btn"
+            onClick={stop}
+            aria-label="Stop guided breathing"
+          >
             Stop
           </button>
         )}
       </div>
-      <p className="overlay-hint">Follow the numbers. With speaker on, VERA will count it out for you.</p>
+      <p className="overlay-hint">
+        Follow the numbers. With speaker on, VERA will count it out for you.
+      </p>
     </div>
   );
 }
